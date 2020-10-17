@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ng-mockito-root',
+  selector: 'qp-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
