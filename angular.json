@@ -1,6 +1,45 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "ng-mockito-ng-mockito": {
+      "projectType": "library",
+      "root": "libs/ng-mockito/ng-mockito",
+      "sourceRoot": "libs/ng-mockito/ng-mockito/src",
+      "prefix": "qupaya",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/ng-mockito/ng-mockito/tsconfig.lib.json",
+            "project": "libs/ng-mockito/ng-mockito/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ng-mockito/ng-mockito/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ng-mockito/ng-mockito/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-mockito/ng-mockito/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/angular"
   },
@@ -21,7 +60,9 @@
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": true
     }
-  }
+  },
+  "defaultProject": "ng-mockito-ng-mockito"
 }

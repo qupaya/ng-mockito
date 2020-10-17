@@ -25,5 +25,9 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "ng-mockito-ng-mockito": {
+      "tags": []
+    }
+  }
 }
