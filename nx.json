@@ -1,5 +1,5 @@
 {
-  "npmScope": "ng-mockito",
+  "npmScope": "qupaya",
   "affected": {
     "defaultBase": "master"
   },
@@ -19,12 +19,7 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "NGM1NDkyZDYtZmUwOC00ZDMzLThkZDQtMWRhZDliOGUwNjRkfHJlYWQtd3JpdGU=",
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
         "canTrackAnalytics": false,
         "showUsageWarnings": true
       }
@@ -36,9 +31,7 @@
     },
     "test-app-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "test-app"
-      ]
+      "implicitDependencies": ["test-app"]
     }
   }
 }

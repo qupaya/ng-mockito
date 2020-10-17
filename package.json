@@ -1,5 +1,6 @@
 {
-  "name": "ng-mockito",
+  "name": "qupaya",
+  "description": "qupaya ng-mockito monorepository",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {

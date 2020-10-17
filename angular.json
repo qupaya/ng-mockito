@@ -10,7 +10,7 @@
       },
       "root": "apps/test-app",
       "sourceRoot": "apps/test-app/src",
-      "prefix": "ng-mockito",
+      "prefix": "qp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
