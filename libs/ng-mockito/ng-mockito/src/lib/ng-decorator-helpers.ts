@@ -16,8 +16,9 @@ type Decorator<D> = D extends 'Pipe'
   ? Injectable
   : Record<string, unknown>;
 
+const reflection = new ɵReflectionCapabilities();
+
 export function getDecoratorNames<T>(decoratedClass: Type<T>): DecoratorName[] {
-  const reflection = new ɵReflectionCapabilities();
   return reflection.annotations(decoratedClass).map((a) => a.ngMetadataName);
 }
 
@@ -25,8 +26,6 @@ export function getDecoratorMetadata<T, D extends DecoratorName>(
   decoratedClass: Type<T>,
   decoratorName: D
 ): Decorator<D> {
-  const reflection = new ɵReflectionCapabilities();
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const annotations: any[] = reflection.annotations(decoratedClass);
   const decorator = annotations.find((a) => a.ngMetadataName === decoratorName);
@@ -38,4 +37,19 @@ export function getDecoratorMetadata<T, D extends DecoratorName>(
     );
   }
   return decorator;
+}
+
+export function getComponentProperties<T>(component: Type<T>) {
+  const props = reflection.propMetadata(component);
+  const inputs: string[] = [];
+  const outputs: string[] = [];
+  Object.entries(props).forEach((entry) => {
+    if (entry[1].find((decorator) => decorator.ngMetadataName === 'Input')) {
+      inputs.push(entry[0]);
+    }
+    if (entry[1].find((decorator) => decorator.ngMetadataName === 'Output')) {
+      outputs.push(entry[0]);
+    }
+  });
+  return { inputs, outputs };
 }

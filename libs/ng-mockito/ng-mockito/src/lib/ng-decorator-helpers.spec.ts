@@ -1,4 +1,13 @@
-import { Component, Pipe, PipeTransform, Injectable } from '@angular/core';
+import {
+  Component,
+  Pipe,
+  PipeTransform,
+  Injectable,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { getComponentProperties } from './ng-decorator-helpers';
 import {
   getDecoratorMetadata,
   getDecoratorNames,
@@ -50,6 +59,23 @@ describe('Angular decorator helpers', () => {
       expect(() => getDecoratorMetadata(TestComponent, 'Pipe')).toThrowError(
         /Did not find decorator Pipe. Found: Component/
       );
+    });
+  });
+
+  describe('getComponentProperties', () => {
+    it('should get Inputs and Outpus', () => {
+      @Component({})
+      class TestComponent {
+        @Input() testInput1 = '';
+        @Input('otherNameForTestInput2') testInput2 = true;
+        @Output() testOutput1 = new EventEmitter<string>();
+        @Output() testOutput2 = new EventEmitter<boolean>();
+      }
+
+      expect(getComponentProperties(TestComponent)).toEqual({
+        inputs: ['testInput1', 'testInput2'],
+        outputs: ['testOutput1', 'testOutput2'],
+      });
     });
   });
 });
