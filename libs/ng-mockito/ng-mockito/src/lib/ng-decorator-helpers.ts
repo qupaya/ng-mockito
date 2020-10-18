@@ -1,12 +1,25 @@
-import { Type, Pipe, ɵReflectionCapabilities, Component } from '@angular/core';
+import {
+  Type,
+  Pipe,
+  ɵReflectionCapabilities,
+  Component,
+  Injectable,
+} from '@angular/core';
 
-type DecoratorName = 'Pipe' | 'Component';
+type DecoratorName = 'Pipe' | 'Component' | 'Injectable';
 
 type Decorator<D> = D extends 'Pipe'
   ? Pipe
   : D extends 'Component'
   ? Component
+  : D extends 'Injectable'
+  ? Injectable
   : Record<string, unknown>;
+
+export function getDecoratorNames<T>(decoratedClass: Type<T>): DecoratorName[] {
+  const reflection = new ɵReflectionCapabilities();
+  return reflection.annotations(decoratedClass).map((a) => a.ngMetadataName);
+}
 
 export function getDecoratorMetadata<T, D extends DecoratorName>(
   decoratedClass: Type<T>,

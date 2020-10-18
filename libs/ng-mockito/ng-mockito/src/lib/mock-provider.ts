@@ -1,10 +1,11 @@
 import { FactoryProvider } from '@angular/core';
 import { instance } from 'ts-mockito';
-import { createTypeAndMock, noOp, TypeOrMock } from './ts-mockito-helpers';
+import { createTypeAndMock, noOp } from './ts-mockito-helpers';
+import { SetupMockFn, TypeOrMock } from './types';
 
 export function mockProvider<T>(
   provide: TypeOrMock<T>,
-  setupMock: (m: T) => void = noOp
+  setupMock: SetupMockFn<T> = noOp
 ): FactoryProvider {
   const { type, mock } = createTypeAndMock(provide);
 
