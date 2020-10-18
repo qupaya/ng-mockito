@@ -34,7 +34,7 @@ describe('mockProvider', () => {
     })
     class HeavyweightService {
       doSomeHeavyweightStuff(): string {
-        throw new Error('heavyweight stuff done.');
+        throw new Error('Real implementation used.');
       }
     }
 
