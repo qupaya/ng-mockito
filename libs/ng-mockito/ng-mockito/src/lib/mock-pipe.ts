@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Pipe, PipeTransform, Type } from '@angular/core';
 import { instance, mock } from 'ts-mockito';
+import { getDecoratorMetadata } from './ng-decorator-helpers';
+import { noOp } from './ts-mockito-helpers';
 
 export function mockPipe<T extends PipeTransform>(
   pipe: Type<T>,
   setupMock: (m: T) => void = noOp
 ): Type<T> {
-  const { name, pure } = getPipeDecorator(pipe);
+  const { name, pure } = getDecoratorMetadata(pipe, 'Pipe');
   const mockPipeDelegate = mock<T>(pipe);
   const mockPipeDelegateInstance = instance(mockPipeDelegate);
 
@@ -24,12 +26,4 @@ export function mockPipe<T extends PipeTransform>(
   setupMock(mockPipeDelegate);
 
   return MockPipe as Type<T>;
-}
-
-function getPipeDecorator(pipe: Type<any>): Pipe {
-  return (pipe as any).__annotations__[0];
-}
-
-function noOp() {
-  // do nothing
 }
