@@ -1,9 +1,10 @@
 import { PipeTransform } from '@angular/core';
+import { mockComponent } from './mock-component';
 import { mockPipe } from './mock-pipe';
+import { mockProvider } from './mock-provider';
 import { getDecoratorNames } from './ng-decorator-helpers';
 import { createTypeAndMock, noOp } from './ts-mockito-helpers';
-import { TypeOrMock, SetupMockFn } from './types';
-import { mockProvider } from './mock-provider';
+import { SetupMockFn, TypeOrMock } from './types';
 
 export function mock<T>(
   typeOrMock: TypeOrMock<T>,
@@ -17,6 +18,10 @@ export function mock<T>(
       (mock as unknown) as PipeTransform,
       (setup as unknown) as SetupMockFn<PipeTransform>
     );
+  }
+
+  if (decoratorNames.includes('Component')) {
+    return mockComponent(mock, setup);
   }
 
   if (decoratorNames.includes('Injectable')) {
