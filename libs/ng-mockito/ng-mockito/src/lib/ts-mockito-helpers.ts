@@ -1,8 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { Type } from '@angular/core';
+import { mock } from 'ts-mockito';
 
-export function getMockedClass<T>(mock: T): Type<T> {
+export type TypeOrMock<T> = Type<T> | T;
+export type TypeAndMock<T> = { type: Type<T>; mock: T };
+
+export function createTypeAndMock<T>(
+  typeOrMock: TypeOrMock<T>
+): TypeAndMock<T> {
+  if (typeof typeOrMock === 'object') {
+    return { type: getMockedClass(typeOrMock), mock: typeOrMock };
+  } else if (typeof typeOrMock === 'function') {
+    return { type: typeOrMock as Type<T>, mock: mock(typeOrMock) };
+  } else {
+    throw new Error(
+      `Given argument had invalid type. Please provide a class or a ts-mockito mock.`
+    );
+  }
+}
+
+function getMockedClass<T>(mock: T): Type<T> {
   if (!('__tsmockitoMocker' in mock)) {
     const constructorName = (mock as any).constructor?.name;
     if (constructorName === '') {

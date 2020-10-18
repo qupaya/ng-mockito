@@ -1,7 +1,7 @@
 import { Component, NgModule, Pipe, PipeTransform } from '@angular/core';
 import { render, screen } from '@testing-library/angular';
 import { mockPipe } from './mock-pipe';
-import { anything, verify, when } from 'ts-mockito';
+import { anything, verify, when, mock } from 'ts-mockito';
 describe('mockPipe', () => {
   describe('integration', () => {
     @Pipe({ name: 'test' })
@@ -34,6 +34,17 @@ describe('mockPipe', () => {
 
         expect(screen.getByTestId('pipeOutput')).toHaveTextContent('mocked');
       });
+
+      // it('should work with pre-defined mock pipe', async () => {
+      //   const mockTestPipe = mock(TestPipe);
+      //   when(mockTestPipe.transform('test')).thenReturn('mocked');
+
+      //   await render(TestComponent, {
+      //     declarations: [mockPipe(mockTestPipe)],
+      //   });
+
+      //   expect(screen.getByTestId('pipeOutput')).toHaveTextContent('mocked');
+      // });
     });
 
     describe('when using a pipe with arguments', () => {
