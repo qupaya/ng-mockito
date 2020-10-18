@@ -21,3 +21,7 @@ export function getMockedClass<T>(mock: T): Type<T> {
   const mockedClass = (mock as any).__tsmockitoMocker.clazz as Type<T>;
   return mockedClass;
 }
+
+export function noOp() {
+  // do nothing
+}

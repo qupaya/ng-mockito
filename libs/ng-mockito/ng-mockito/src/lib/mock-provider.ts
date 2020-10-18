@@ -1,6 +1,6 @@
 import { FactoryProvider, Type } from '@angular/core';
 import { instance, mock } from 'ts-mockito';
-import { getMockedClass } from './ts-mockito-helpers';
+import { getMockedClass, noOp } from './ts-mockito-helpers';
 
 export function mockProvider<T>(
   provide: Type<T> | T,
@@ -33,8 +33,4 @@ function createFactoryProviderFromMock<T>(
   const mockedClass = getMockedClass(provide);
   setupMock(provide);
   return { provide: mockedClass, useFactory: () => instance(provide) };
-}
-
-function noOp() {
-  // do nothing
 }
