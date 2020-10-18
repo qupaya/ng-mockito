@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "strict": true,
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -18,7 +17,15 @@
     "baseUrl": ".",
     "paths": {
       "ng-mockito": ["libs/ng-mockito/ng-mockito/src/index.ts"]
-    }
+    },
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictTemplates": true
   },
   "exclude": ["node_modules", "tmp"]
 }
