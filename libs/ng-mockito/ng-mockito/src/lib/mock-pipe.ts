@@ -2,11 +2,12 @@
 import { Pipe, PipeTransform, Type } from '@angular/core';
 import { instance } from 'ts-mockito';
 import { getDecoratorMetadata } from './ng-decorator-helpers';
-import { createTypeAndMock, noOp, TypeOrMock } from './ts-mockito-helpers';
+import { createTypeAndMock, noOp } from './ts-mockito-helpers';
+import { TypeOrMock, SetupMockFn } from './types';
 
 export function mockPipe<T extends PipeTransform>(
   pipe: TypeOrMock<T>,
-  setupMock: (m: T) => void = noOp
+  setupMock: SetupMockFn<T> = noOp
 ): Type<T> {
   const { type, mock: mockPipeDelegate } = createTypeAndMock(pipe);
   const { name, pure } = getDecoratorMetadata(type, 'Pipe');

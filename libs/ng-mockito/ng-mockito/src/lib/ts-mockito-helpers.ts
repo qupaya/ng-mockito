@@ -2,9 +2,7 @@
 
 import { Type } from '@angular/core';
 import { mock } from 'ts-mockito';
-
-export type TypeOrMock<T> = Type<T> | T;
-export type TypeAndMock<T> = { type: Type<T>; mock: T };
+import { TypeAndMock, TypeOrMock } from './types';
 
 export function createTypeAndMock<T>(
   typeOrMock: TypeOrMock<T>
