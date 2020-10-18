@@ -1,7 +1,7 @@
 {
   "npmScope": "qupaya",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "implicitDependencies": {
     "angular.json": "*",
@@ -26,8 +26,8 @@
     }
   },
   "projects": {
-    "ng-mockito-ng-mockito": {
-      "tags": []
+    "ng-mockito": {
+      "tags": ["scope:ng-mockito"]
     }
   }
 }

@@ -1,1 +1,1 @@
-export * from './lib/ng-mockito-ng-mockito.module';
+export * from './lib/mock-provider';

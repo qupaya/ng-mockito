@@ -1,11 +1,11 @@
 {
   "version": 1,
   "projects": {
-    "ng-mockito-ng-mockito": {
+    "ng-mockito": {
       "projectType": "library",
       "root": "libs/ng-mockito/ng-mockito",
       "sourceRoot": "libs/ng-mockito/ng-mockito/src",
-      "prefix": "qupaya",
+      "prefix": "qp",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
@@ -64,5 +64,5 @@
       "strict": true
     }
   },
-  "defaultProject": "ng-mockito-ng-mockito"
+  "defaultProject": "ng-mockito"
 }
