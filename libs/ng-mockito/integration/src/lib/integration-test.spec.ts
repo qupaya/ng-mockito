@@ -1,8 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { render, screen } from '@testing-library/angular';
-import { mockComponent, mockNg, mockProvider } from 'ng-mockito';
+import { mockComponent, mockNg, mockPipe, mockProvider } from 'ng-mockito';
 import { mock, when } from 'ts-mockito';
-import { mockPipe } from '../../../ng-mockito/src/lib/mock-pipe';
 import { IntegrationTestChildComponent } from './integration-test-child.component';
 import { IntegrationTestComponent } from './integration-test.component';
 import { IntegrationTestPipe } from './integration-test.pipe';
@@ -10,13 +9,15 @@ import { IntegrationTestService } from './integration-test.service';
 
 describe('IntegrationTest', () => {
   it('should create', async () => {
-    await render(IntegrationTestComponent, {
-      declarations: [
-        mockNg(IntegrationTestChildComponent),
-        mockNg(IntegrationTestPipe),
-      ],
-      providers: [mockNg(IntegrationTestService)],
-    });
+    await expect(
+      render(IntegrationTestComponent, {
+        declarations: [
+          mockNg(IntegrationTestChildComponent),
+          mockNg(IntegrationTestPipe),
+        ],
+        providers: [mockNg(IntegrationTestService)],
+      })
+    ).resolves.toBeDefined();
   });
 
   it('should mock all the things with default values', async () => {
