@@ -2,15 +2,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { render } from '@testing-library/angular';
 import * as tsMockito from 'ts-mockito';
 import { mockComponent as _mockComponent } from './mock-component';
-import { mock as _mock } from './mock';
+import { mockNg } from './mock-ng';
 
 describe.each`
   mockComponent     | description
-  ${_mock}          | ${'using mock function'}
+  ${mockNg}         | ${'using mockNg function'}
   ${_mockComponent} | ${'using mockComponent function'}
 `(
   'mock component ($description)',
-  ({ mockComponent }: { mockComponent: typeof _mock }) => {
+  ({ mockComponent }: { mockComponent: typeof mockNg }) => {
     @Component({
       selector: 'test-child',
       template: '',

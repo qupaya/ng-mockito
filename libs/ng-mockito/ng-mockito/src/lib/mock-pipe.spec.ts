@@ -2,13 +2,13 @@ import { Component, Pipe, PipeTransform } from '@angular/core';
 import { render, screen } from '@testing-library/angular';
 import * as tsMockito from 'ts-mockito';
 import { mockPipe as _mockPipe } from './mock-pipe';
-import { mock as _mock } from './mock';
+import { mockNg } from './mock-ng';
 
 describe.each`
   mockPipe     | description
-  ${_mock}     | ${'using mock function'}
+  ${mockNg}    | ${'using mockNg function'}
   ${_mockPipe} | ${'using mockPipe function'}
-`('mock pipe ($description)', ({ mockPipe }: { mockPipe: typeof _mock }) => {
+`('mock pipe ($description)', ({ mockPipe }: { mockPipe: typeof mockNg }) => {
   describe('integration', () => {
     @Pipe({ name: 'test' })
     class TestPipe implements PipeTransform {
