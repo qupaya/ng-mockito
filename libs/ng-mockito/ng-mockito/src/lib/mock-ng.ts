@@ -6,7 +6,7 @@ import { getDecoratorNames } from './ng-decorator-helpers';
 import { createTypeAndMock, noOp } from './ts-mockito-helpers';
 import { SetupMockFn, TypeOrMock } from './types';
 
-export function mock<T>(
+export function mockNg<T>(
   typeOrMock: TypeOrMock<T>,
   setup: SetupMockFn<T> = noOp
 ) {

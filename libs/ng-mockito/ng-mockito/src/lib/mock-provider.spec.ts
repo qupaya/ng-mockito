@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import * as tsMockito from 'ts-mockito';
-import { mock as _mock } from './mock';
+import { mockNg } from './mock-ng';
 import { mockProvider as _mockProvider } from './mock-provider';
 
 describe.each`
   mockProvider     | description
-  ${_mock}         | ${'using mock function'}
+  ${mockNg}        | ${'using mock function'}
   ${_mockProvider} | ${'using mockProvider function'}
 `(
   'mock provider ($description)',
-  ({ mockProvider }: { mockProvider: typeof _mock }) => {
+  ({ mockProvider }: { mockProvider: typeof mockNg }) => {
     it('should throw error if ts-mockito instance is given', () => {
       expect(() =>
         mockProvider(tsMockito.instance(tsMockito.mock(class TestService {})))
