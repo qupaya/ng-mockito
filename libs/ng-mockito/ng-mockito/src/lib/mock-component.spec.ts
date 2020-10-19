@@ -17,12 +17,12 @@ describe.each`
     })
     class TestComponent implements OnInit {
       @Input() set testInput(value: string) {
-        fail(`used real Input with value ${value}`);
+        throw new Error(`used real Input with value ${value}`);
       }
       @Output() testOutput = new EventEmitter<string>();
 
       ngOnInit(): void {
-        fail(`used real ngOnInit`);
+        throw new Error(`used real ngOnInit`);
       }
     }
 
@@ -38,10 +38,11 @@ describe.each`
     }
 
     it('should provide default mocks for component', async () => {
-      await render(TestHostComponent, {
-        declarations: [mockComponent(TestComponent)],
-      });
-      // fail will be called, if testInput is not mocked
+      await expect(
+        render(TestHostComponent, {
+          declarations: [mockComponent(TestComponent)],
+        })
+      ).resolves.toBeDefined();
     });
 
     it('should setup mocked component', async () => {
