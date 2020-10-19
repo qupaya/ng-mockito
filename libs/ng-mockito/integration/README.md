@@ -1,7 +1,3 @@
-# ng-mockito-integration
+# Integration tests for ng-mockito
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test ng-mockito-integration` to execute the unit tests.
+Run `nx test ng-mockito-integration` to execute the tests.
