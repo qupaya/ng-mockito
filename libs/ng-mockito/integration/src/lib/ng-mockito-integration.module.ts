@@ -6,6 +6,10 @@ import { IntegrationTestPipe } from './integration-test.pipe';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [IntegrationTestComponent, IntegrationTestChildComponent, IntegrationTestPipe],
+  declarations: [
+    IntegrationTestComponent,
+    IntegrationTestChildComponent,
+    IntegrationTestPipe,
+  ],
 })
 export class NgMockitoIntegrationModule {}
