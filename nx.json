@@ -28,6 +28,9 @@
   "projects": {
     "ng-mockito": {
       "tags": ["scope:ng-mockito"]
+    },
+    "ng-mockito-integration": {
+      "tags": ["scope:ng-mockito"]
     }
   }
 }

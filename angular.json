@@ -38,6 +38,32 @@
           "style": "scss"
         }
       }
+    },
+    "ng-mockito-integration": {
+      "projectType": "library",
+      "root": "libs/ng-mockito/integration",
+      "sourceRoot": "libs/ng-mockito/integration/src",
+      "prefix": "qp",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ng-mockito/integration/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-mockito/integration/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
