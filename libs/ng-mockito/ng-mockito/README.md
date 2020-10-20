@@ -4,10 +4,9 @@
 
 # ng-mockito
 
-Mocking for Angular, based on [ts-mockito](https://github.com/NagRock/ts-mockito).
+Mocking for Angular, based on [ts-mockito](https://github.com/NagRock/ts-mockito). If you use ts-mockito for your Angular project, you'll love ng-mockito!
 
-If you use ts-mockito for your Angular project, you'll love ng-mockito. It's 100% compatible, you're still working with the usual functions (`when`, `verify`, ...).
-
+As a layer on top of ts-mockito, it's 100% compatible to it. You're still working with the usual functions (`when`, `verify`, ...).
 It just makes your life easier when preparing mocks for Angular-specific types, by providing utilities to simplify setup:
 
 <!-- prettier-ignore -->
