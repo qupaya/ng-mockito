@@ -1,6 +1,27 @@
 {
   "name": "ng-mockito",
   "version": "0.0.1-preview.1",
+  "description": "Enhance ts-mockito mocking for Angular",
+  "keywords": [
+    "angular",
+    "testing",
+    "mocking",
+    "typescript",
+    "ts-mockito"
+  ],
+  "author": "qupaya technologies GmbH <mail@qupaya.com> (https://qupaya.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qupaya/ng-mockito/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qupaya/ng-mockito.git",
+    "directory": "libs/ng-mockito/ng-mockito"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "@angular/common": "^10.1.6",
     "@angular/core": "^10.1.6",
