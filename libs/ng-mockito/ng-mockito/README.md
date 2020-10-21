@@ -1,4 +1,4 @@
-![GitHub Workflow Status (branch main)](https://img.shields.io/github/workflow/status/qupaya/ng-mockito/CI/main) ![GitHub](https://img.shields.io/github/license/qupaya/ng-mockito) ![npm](https://img.shields.io/npm/v/ng-mockito)
+![GitHub Workflow Status (branch main)](https://img.shields.io/github/workflow/status/qupaya/ng-mockito/CI/main) ![Codecov branch](https://img.shields.io/codecov/c/github/qupaya/ng-mockito/main) ![npm](https://img.shields.io/npm/v/ng-mockito) ![GitHub](https://img.shields.io/github/license/qupaya/ng-mockito)
 
 <img src="https://raw.githubusercontent.com/qupaya/assets/master/logo/logo-full.svg" alt="dark qupaya logo with font" width="50" align="right">
 
