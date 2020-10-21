@@ -34,7 +34,25 @@ jobs:
         run: npm run lint
 
       - name: Test
-        run: npm test -- --code-coverage=true
+        run: npm test -- --codeCoverage --coverageReporters=json --coverageReporters=text --coverageReporters=text-summary
+
+      - name: Test coverage unit tests
+        uses: codecov/codecov-action@v1.0.14
+        with:
+          name: ng-mockito (unit tests)
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/libs/ng-mockito/ng-mockito/coverage-final.json
+          # Specify whether or not CI build should fail if Codecov runs into an error during upload
+          fail_ci_if_error: false
+
+      - name: Test coverage integration tests
+        uses: codecov/codecov-action@v1.0.14
+        with:
+          name: ng-mockito (integration tests)
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/libs/ng-mockito/integration/coverage-final.json
+          # Specify whether or not CI build should fail if Codecov runs into an error during upload
+          fail_ci_if_error: false
 
       - name: Build
         run: npm run build
