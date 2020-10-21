@@ -34,7 +34,7 @@ jobs:
         run: npm run lint
 
       - name: Test
-        run: npm test -- --codeCoverage --coverageReporters=json --coverageReporters=text --coverageReporters=text-summary
+        run: npm test -- --codeCoverage --coverageReporters=json --coverageReporters=text --coverageReporters=text-summary --skip-nx-cache
 
       - name: Test coverage unit tests
         uses: codecov/codecov-action@v1.0.14
