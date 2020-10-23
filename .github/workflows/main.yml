@@ -1,19 +1,14 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the action will run.
 on:
   push:
-    branches: [main]
+    branches: [main, alpha]
   pull_request:
-    branches: [main]
+    branches: [main, alpha]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-18.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -56,3 +51,14 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Release
+        if: github.event_name == 'push'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN_QUPAYA_TECH }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_AUTHOR_NAME: qupaya bot
+          GIT_AUTHOR_EMAIL: git@qupaya.com
+          GIT_COMMITTER_NAME: qupaya bot
+          GIT_COMMITTER_EMAIL: git@qupaya.com
+        run: npx semantic-release
