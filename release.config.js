@@ -1,5 +1,4 @@
 module.exports = {
-  dryRun: true,
   branches: ['main', { name: 'alpha', prerelease: true }],
   preset: 'angular',
   plugins: [
@@ -22,7 +21,12 @@ module.exports = {
         },
       },
     ],
-    '@semantic-release/changelog',
+    [
+      '@semantic-release/changelog',
+      {
+        changelogFile: 'CHANGELOG.md',
+      },
+    ],
     [
       '@semantic-release/npm',
       { npmPublish: true, pkgRoot: './dist/libs/ng-mockito/ng-mockito' },
@@ -34,7 +38,9 @@ module.exports = {
     [
       '@semantic-release/git',
       {
-        assets: ['libs/ng-mockito/ng-mockito/package.json'],
+        assets: ['libs/ng-mockito/ng-mockito/package.json', 'CHANGELOG.md'],
+        message:
+          'build: release version ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       },
     ],
   ],
