@@ -39,8 +39,7 @@ module.exports = {
       '@semantic-release/git',
       {
         assets: ['libs/ng-mockito/ng-mockito/package.json', 'CHANGELOG.md'],
-        message:
-          'build: release version ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+        message: 'build: release version ${nextRelease.version}\n\n[skip ci]',
       },
     ],
   ],
