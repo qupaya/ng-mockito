@@ -55,10 +55,10 @@ jobs:
       - name: Release
         if: github.event_name == 'push'
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN_QUPAYA_TECH }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GIT_AUTHOR_NAME: qupaya bot
-          GIT_AUTHOR_EMAIL: git@qupaya.com
-          GIT_COMMITTER_NAME: qupaya bot
-          GIT_COMMITTER_EMAIL: git@qupaya.com
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN_QUPAYA_BOT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_QUPAYA_BOT }}
+          GIT_AUTHOR_NAME: qupaya-bot
+          GIT_AUTHOR_EMAIL: bot@qupaya.com
+          GIT_COMMITTER_NAME: qupaya-bot
+          GIT_COMMITTER_EMAIL: bot@qupaya.com
         run: npx semantic-release
