@@ -16,6 +16,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check-out repository
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false # needed for semantic-release, see https://github.com/semantic-release/git/issues/196#issuecomment-601310576
 
       - name: Setup Node.js 12.x
         uses: actions/setup-node@v1
