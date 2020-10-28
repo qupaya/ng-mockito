@@ -5,7 +5,7 @@ import {
   getComponentProperties,
   getDecoratorMetadata,
 } from './ng-decorator-helpers';
-import { createTypeAndMock, noOp } from './ts-mockito-helpers';
+import { createTypeAndMock, noOp, isStubbed } from './ts-mockito-helpers';
 import { SetupMockFn, TypeOrMock } from './types';
 
 export function mockComponent<T>(
@@ -26,10 +26,9 @@ export function mockComponent<T>(
   setupMock(mock);
 
   outputs.forEach((output) => {
-    const outputStub = (mock as any)[output];
     // provide default EventEmitter stub for all output properties,
     // if they are not already set up.
-    if (outputStub?.methodStubCollection?.items?.length === 0) {
+    if (!isStubbed(mock, output)) {
       when((mock as any)[output]).thenReturn(new EventEmitter<any>());
     }
   });
