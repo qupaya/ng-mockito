@@ -2,6 +2,7 @@
 
 import { Type } from '@angular/core';
 import { mock } from 'ts-mockito';
+import { Mocker } from 'ts-mockito/lib/Mock';
 import { TypeAndMock, TypeOrMock } from './types';
 
 export function createTypeAndMock<T>(
@@ -53,10 +54,19 @@ function getMockedClass<T>(mock: T): Type<T> {
       );
     }
   }
-  const mockedClass = (mock as any).__tsmockitoMocker.clazz as Type<T>;
+  const mockedClass = getTsMockitoMocker<T>(mock)['clazz'] as Type<T>;
   return mockedClass;
 }
 
 export function noOp() {
   // do nothing
+}
+
+export function isStubbed<T>(mock: T, propertyName: string) {
+  const mocker = getTsMockitoMocker(mock);
+  return propertyName in mocker['methodStubCollections'];
+}
+
+function getTsMockitoMocker<T>(mock: T): Mocker {
+  return (mock as any).__tsmockitoMocker;
 }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { instance, mock } from 'ts-mockito';
-import { createTypeAndMock } from './ts-mockito-helpers';
+import { instance, mock, when } from 'ts-mockito';
+import { createTypeAndMock, isStubbed } from './ts-mockito-helpers';
 
 describe('ts-mockito helpers', () => {
   describe('createTypeAndMock', () => {
@@ -59,6 +59,38 @@ describe('ts-mockito helpers', () => {
       expect(typeAndMock.type).toBe(Test);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect((typeAndMock.mock as any).__tsmockitoMocker.clazz).toBe(Test);
+    });
+  });
+
+  describe('isStubbed', () => {
+    it('should return true if property is stubbed', () => {
+      const mockTest = mock(
+        class Test {
+          testProperty = '';
+          testFunction() {
+            return '';
+          }
+        }
+      );
+      when(mockTest.testProperty).thenReturn('test');
+      when(mockTest.testFunction()).thenReturn('test');
+
+      expect(isStubbed(mockTest, 'testProperty')).toBe(true);
+      expect(isStubbed(mockTest, 'testFunction')).toBe(true);
+    });
+
+    it('should return false if property is not stubbed', () => {
+      const mockTest = mock(
+        class Test {
+          testProperty = '';
+          testFunction() {
+            return '';
+          }
+        }
+      );
+
+      expect(isStubbed(mockTest, 'testProperty')).toBe(false);
+      expect(isStubbed(mockTest, 'testFunction')).toBe(false);
     });
   });
 });
