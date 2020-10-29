@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/qupaya/ng-mockito/compare/v1.0.1...v1.0.2) (2020-10-29)
+
+
+### Bug Fixes
+
+* disable GitHub release until configuration issue is solved ([853ef81](https://github.com/qupaya/ng-mockito/commit/853ef8101dcf196bc8bf7bc241d1f1a6bb54e95c))
+
 ## [1.0.1](https://github.com/qupaya/ng-mockito/compare/v1.0.0...v1.0.1) (2020-10-29)
 
 
