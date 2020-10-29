@@ -1,11 +1,10 @@
-import { PipeTransform } from '@angular/core';
 import { mockComponent } from './mock-component';
+import { mockDirective } from './mock-directive';
 import { mockPipe } from './mock-pipe';
 import { mockProvider } from './mock-provider';
 import { getDecoratorNames } from './ng-decorator-helpers';
 import { createTypeAndMock, noOp } from './ts-mockito-helpers';
 import { SetupMockFn, TypeOrMock } from './types';
-import { mockDirective } from './mock-directive';
 
 /**
  * Returns a mocked version of the given type.
@@ -25,10 +24,7 @@ export function mockNg<T>(
   const decoratorNames = getDecoratorNames(type);
 
   if (decoratorNames.includes('Pipe')) {
-    return mockPipe(
-      (mock as unknown) as PipeTransform,
-      (setup as unknown) as SetupMockFn<PipeTransform>
-    );
+    return mockPipe(mock, setup);
   }
 
   if (decoratorNames.includes('Component')) {
