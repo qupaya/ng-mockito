@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/qupaya/ng-mockito/compare/v1.0.0...v1.0.1) (2020-10-29)
+
+
+### Bug Fixes
+
+* release correct assets on GitHub ([1dd0f7c](https://github.com/qupaya/ng-mockito/commit/1dd0f7c8c9e63eff748a137fbc46b7a0261ff976))
+
 # 1.0.0 (2020-10-29)
 
 
