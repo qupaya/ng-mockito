@@ -31,7 +31,6 @@ module.exports = {
       '@semantic-release/npm',
       { npmPublish: true, pkgRoot: './dist/libs/ng-mockito/ng-mockito' },
     ],
-    ['@semantic-release/github', { assets: 'dist/libs/ng-mockito/ng-mockito' }],
     [
       '@semantic-release/git',
       {
