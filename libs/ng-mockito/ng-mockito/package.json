@@ -1,6 +1,6 @@
 {
   "name": "ng-mockito",
-  "version": "0.0.1-preview.1",
+  "version": "0.0.0",
   "description": "Enhance ts-mockito mocking for Angular",
   "keywords": [
     "angular",

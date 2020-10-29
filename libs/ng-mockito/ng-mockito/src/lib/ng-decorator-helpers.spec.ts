@@ -6,8 +6,10 @@ import {
   Input,
   Output,
   EventEmitter,
+  Directive,
 } from '@angular/core';
-import { getComponentProperties } from './ng-decorator-helpers';
+import { getDirectiveProperties } from './ng-decorator-helpers';
+import { Type } from '@angular/core';
 import {
   getDecoratorMetadata,
   getDecoratorNames,
@@ -52,6 +54,22 @@ describe('Angular decorator helpers', () => {
       );
     });
 
+    it('should get Directive metadata', () => {
+      @Directive({ selector: '[test]' })
+      class TestDirective {}
+
+      expect(getDecoratorMetadata(TestDirective, 'Directive').selector).toEqual(
+        '[test]'
+      );
+    });
+
+    it('should get Injectable metadata', () => {
+      @Injectable({ providedIn: 'root' })
+      class TestService {}
+
+      expect(getDecoratorMetadata(TestService, 'Injectable')).toBeDefined();
+    });
+
     it('should throw error if metadata was not found', () => {
       @Component({ template: 'test' })
       class TestComponent {}
@@ -62,20 +80,35 @@ describe('Angular decorator helpers', () => {
     });
   });
 
-  describe('getComponentProperties', () => {
-    it('should get Inputs and Outpus', () => {
-      @Component({})
-      class TestComponent {
-        @Input() testInput1 = '';
-        @Input('otherNameForTestInput2') testInput2 = true;
-        @Output() testOutput1 = new EventEmitter<string>();
-        @Output() testOutput2 = new EventEmitter<boolean>();
-      }
+  describe('getDirectiveProperties', () => {
+    @Component({})
+    class TestComponent {
+      @Input() testInput1 = '';
+      @Input('otherNameForTestInput2') testInput2 = true;
+      @Output() testOutput1 = new EventEmitter<string>();
+      @Output() testOutput2 = new EventEmitter<boolean>();
+    }
 
-      expect(getComponentProperties(TestComponent)).toEqual({
-        inputs: ['testInput1', 'testInput2'],
-        outputs: ['testOutput1', 'testOutput2'],
-      });
-    });
+    @Directive({})
+    class TestDirective {
+      @Input() testInput1 = '';
+      @Input('otherNameForTestInput2') testInput2 = true;
+      @Output() testOutput1 = new EventEmitter<string>();
+      @Output() testOutput2 = new EventEmitter<boolean>();
+    }
+
+    it.each`
+      type
+      ${TestComponent}
+      ${TestDirective}
+    `(
+      'should get Inputs and Outpus for $type',
+      <T>({ type }: { type: Type<T> }) => {
+        expect(getDirectiveProperties(type)).toEqual({
+          inputs: ['testInput1', 'testInput2'],
+          outputs: ['testOutput1', 'testOutput2'],
+        });
+      }
+    );
   });
 });

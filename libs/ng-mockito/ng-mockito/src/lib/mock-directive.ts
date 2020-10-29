@@ -1,32 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, EventEmitter } from '@angular/core';
+import { Directive, EventEmitter } from '@angular/core';
 import { instance, when } from 'ts-mockito';
 import {
-  getDirectiveProperties,
   getDecoratorMetadata,
+  getDirectiveProperties,
 } from './ng-decorator-helpers';
-import { createTypeAndMock, noOp, isStubbed } from './ts-mockito-helpers';
+import { createTypeAndMock, isStubbed, noOp } from './ts-mockito-helpers';
 import { SetupMockFn, TypeOrMock } from './types';
 
 /**
- * Returns a mocked version of the given component.
+ * Returns a mocked version of the given directive.
  *
  * `EventEmitters` of outputs are stubbed with an empty `new EventEmitter<any>()`, if not stubbed manually.
  *
  * @param typeOrMock either the class to mock, or an already prepared ts-mockito mock
  * @param setupMock  Optional setup function for stubbing. Perfect place to call ts-mockito's `when` function
  */
-export function mockComponent<T>(
-  component: TypeOrMock<T>,
+export function mockDirective<T>(
+  directive: TypeOrMock<T>,
   setupMock: SetupMockFn<T> = noOp
 ) {
-  const { type, mock } = createTypeAndMock(component);
-  const { selector } = getDecoratorMetadata(type, 'Component');
+  const { type, mock } = createTypeAndMock(directive);
+  const { selector } = getDecoratorMetadata(type, 'Directive');
   const { inputs, outputs } = getDirectiveProperties(type);
 
-  const metadata: Component = {
+  const metadata: Directive = {
     selector,
-    template: '<ng-content></ng-content>',
     inputs,
     outputs,
   };
@@ -41,9 +40,9 @@ export function mockComponent<T>(
     }
   });
 
-  function MockComponent() {
+  function MockDirective() {
     return instance(mock);
   }
 
-  return Component(metadata)(MockComponent);
+  return Directive(metadata)(MockDirective);
 }

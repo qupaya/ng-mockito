@@ -6,20 +6,25 @@
 
 # ng-mockito
 
-Mocking for Angular, based on [ts-mockito](https://github.com/NagRock/ts-mockito). If you use ts-mockito for your Angular project, you'll love ng-mockito!
+Mocking for Angular, based on [ts-mockito](https://github.com/NagRock/ts-mockito). If you use ts-mockito for your Angular project, you'll love ng-mockito! It also integrate nicely with [@testing-library/angular](https://github.com/testing-library/angular-testing-library).
 
 As a layer on top of ts-mockito, it's 100% compatible to it. You're still working with the usual functions (`when`, `verify`, ...).
-It just makes your life easier when preparing mocks for Angular-specific types, by providing utilities to simplify setup:
+It just makes your life easier when preparing mocks for Angular-specific types.
+
+## Features
+
+Provides `mockNg` function to **simplify mock setup**:
 
 <!-- prettier-ignore -->
 ```typescript
 TestBed.configureTestingModule({
   declarations: [
     ComponentUnderTest,
-    mockNg(SomeChildComponent), // mockNg detects if Component...
-    mockNg(SomePipe), // ... Pipe ...
+    mockNg(SomeChildComponent), // mockNg detects if component...
+    mockNg(SomePipe), // ... pipe ...
+    mockNg(SomeDirective), // ... directive ...
   ],
-  providers: [mockNg(SomeService)], // ... or Service is mocked
+  providers: [mockNg(SomeService)], // ... or service is mocked
              // 👆️
              //    Note, that you don't have to declare
              //    {provide: SomeService, useFactory: ... }
@@ -27,7 +32,7 @@ TestBed.configureTestingModule({
 });
 ```
 
-You can stub mocks inline:
+You can **stub your mocks inline**:
 
 ```typescript
 mockNg(TestPipe, (mockTestPipe) =>
@@ -41,17 +46,23 @@ Or use your pre-defined mocks (e.g. if you want to use `beforeEach`):
 
 <!-- prettier-ignore -->
 ```typescript
-const mockTestComponent = mock(IntegrationTestChildComponent);
+const mockTestComponent = mock(SomeChildComponent);
 when(mockTestComponent.someOutput).thenReturn(testComponentOutput);
-                    // 👆️
-                    //    Note, that if you don't provide a default stub for someOutput
-                    //    here, mockNg will create a default EventEmitter stub for you.
+                      // 👆️
+                      //    Note, that if you don't provide a default stub for someOutput
+                      //    here, mockNg will create a default EventEmitter stub for you.
 
-mockNg(IntegrationTestChildComponent);
+mockNg(SomeChildComponent);
 ```
+
+Instead of `mockNg`, you can also use the more specific function `mockComponent`, `mockDirective`, `mockPipe` and `mockProvider`.
+
+## Further reading
+
+For more usage examples in combination with [@testing-library/angular](https://github.com/testing-library/angular-testing-library), please have a look at the [spec file in our GitHub repo](https://github.com/qupaya/ng-mockito/blob/main/libs/ng-mockito/integration/src/lib/integration-test.spec.ts).
 
 ---
 
 From [qupaya](https://www.qupaya.com/) with 🖤️
 
-Follow Us: [Twitter](twitter.com/qupaya) | [LinkedIn](linkedin.com/company/qupaya)
+Follow us: [Twitter](twitter.com/qupaya) | [LinkedIn](linkedin.com/company/qupaya)
