@@ -1,3 +1,15 @@
+# [1.0.0-alpha.2](https://github.com/qupaya/ng-mockito/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2020-10-29)
+
+
+### Bug Fixes
+
+* **ng-mockito:** handle illegal function arguments ([d7ee7ef](https://github.com/qupaya/ng-mockito/commit/d7ee7ef8737b4f8bd24e07fbe02c2824dfd84665))
+
+
+### Features
+
+* **ng-mockito:** add mocking function for directives ([0aef7b7](https://github.com/qupaya/ng-mockito/commit/0aef7b7212edb308b5e010d18a39a327a003b9bd))
+
 # 1.0.0-alpha.1 (2020-10-24)
 
 
