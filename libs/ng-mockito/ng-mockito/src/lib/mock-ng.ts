@@ -5,6 +5,7 @@ import { mockProvider } from './mock-provider';
 import { getDecoratorNames } from './ng-decorator-helpers';
 import { createTypeAndMock, noOp } from './ts-mockito-helpers';
 import { SetupMockFn, TypeOrMock } from './types';
+import { mockDirective } from './mock-directive';
 
 export function mockNg<T>(
   typeOrMock: TypeOrMock<T>,
@@ -22,6 +23,10 @@ export function mockNg<T>(
 
   if (decoratorNames.includes('Component')) {
     return mockComponent(mock, setup);
+  }
+
+  if (decoratorNames.includes('Directive')) {
+    return mockDirective(mock, setup);
   }
 
   if (decoratorNames.includes('Injectable')) {

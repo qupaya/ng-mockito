@@ -4,14 +4,17 @@ import {
   ɵReflectionCapabilities,
   Component,
   Injectable,
+  Directive,
 } from '@angular/core';
 
-type DecoratorName = 'Pipe' | 'Component' | 'Injectable';
+type DecoratorName = 'Pipe' | 'Component' | 'Directive' | 'Injectable';
 
 type Decorator<D> = D extends 'Pipe'
   ? Pipe
   : D extends 'Component'
   ? Component
+  : D extends 'Directive'
+  ? Directive
   : D extends 'Injectable'
   ? Injectable
   : Record<string, unknown>;
@@ -39,8 +42,8 @@ export function getDecoratorMetadata<T, D extends DecoratorName>(
   return decorator;
 }
 
-export function getComponentProperties<T>(component: Type<T>) {
-  const props = reflection.propMetadata(component);
+export function getDirectiveProperties<T>(directive: Type<T>) {
+  const props = reflection.propMetadata(directive);
   const inputs: string[] = [];
   const outputs: string[] = [];
   Object.entries(props).forEach((entry) => {

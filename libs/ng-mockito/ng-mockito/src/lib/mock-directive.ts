@@ -1,24 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, EventEmitter } from '@angular/core';
+import { Directive, EventEmitter } from '@angular/core';
 import { instance, when } from 'ts-mockito';
 import {
-  getDirectiveProperties,
   getDecoratorMetadata,
+  getDirectiveProperties,
 } from './ng-decorator-helpers';
-import { createTypeAndMock, noOp, isStubbed } from './ts-mockito-helpers';
+import { createTypeAndMock, isStubbed, noOp } from './ts-mockito-helpers';
 import { SetupMockFn, TypeOrMock } from './types';
 
-export function mockComponent<T>(
-  component: TypeOrMock<T>,
+export function mockDirective<T>(
+  directive: TypeOrMock<T>,
   setupMock: SetupMockFn<T> = noOp
 ) {
-  const { type, mock } = createTypeAndMock(component);
-  const { selector } = getDecoratorMetadata(type, 'Component');
+  const { type, mock } = createTypeAndMock(directive);
+  const { selector } = getDecoratorMetadata(type, 'Directive');
   const { inputs, outputs } = getDirectiveProperties(type);
 
-  const metadata: Component = {
+  const metadata: Directive = {
     selector,
-    template: '<ng-content></ng-content>',
     inputs,
     outputs,
   };
@@ -33,9 +32,9 @@ export function mockComponent<T>(
     }
   });
 
-  function MockComponent() {
+  function MockDirective() {
     return instance(mock);
   }
 
-  return Component(metadata)(MockComponent);
+  return Directive(metadata)(MockDirective);
 }
