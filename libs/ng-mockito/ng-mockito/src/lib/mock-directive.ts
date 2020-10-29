@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Directive, EventEmitter } from '@angular/core';
+import { Directive, EventEmitter, Type } from '@angular/core';
 import { instance, when } from 'ts-mockito';
 import {
   getDecoratorMetadata,
@@ -19,7 +19,7 @@ import { SetupMockFn, TypeOrMock } from './types';
 export function mockDirective<T>(
   directive: TypeOrMock<T>,
   setupMock: SetupMockFn<T> = noOp
-) {
+): Type<T> {
   const { type, mock } = createTypeAndMock(directive);
   const { selector } = getDecoratorMetadata(type, 'Directive');
   const { inputs, outputs } = getDirectiveProperties(type);
@@ -44,5 +44,5 @@ export function mockDirective<T>(
     return instance(mock);
   }
 
-  return Directive(metadata)(MockDirective);
+  return (Directive(metadata)(MockDirective) as unknown) as Type<T>;
 }
