@@ -1,18 +1,18 @@
 import {
   Component,
-  Pipe,
-  PipeTransform,
+  Directive,
+  EventEmitter,
   Injectable,
   Input,
   Output,
-  EventEmitter,
-  Directive,
+  Pipe,
+  PipeTransform,
+  Type,
 } from '@angular/core';
-import { getDirectiveProperties } from './ng-decorator-helpers';
-import { Type } from '@angular/core';
 import {
   getDecoratorMetadata,
   getDecoratorNames,
+  getDirectiveProperties,
 } from './ng-decorator-helpers';
 
 describe('Angular decorator helpers', () => {

@@ -11,6 +11,7 @@
     "build": "nx run-many --all --target=build --prod --parallel",
     "postversion": "cp -r dist/libs/ng-mockito/ng-mockito/package.json libs/ng-mockito/ng-mockito",
     "test": "nx run-many --all --target=test --parallel --detect-open-handles",
+    "watch:test": "npm test -- --watch",
     "lint": "nx workspace-lint && nx run-many --all --target=lint --parallel",
     "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
