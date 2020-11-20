@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/qupaya/ng-mockito/compare/v1.0.2...v1.0.3) (2020-11-20)
+
+
+### Bug Fixes
+
+* **ng-mockito:** return correct types from mock functions ([c898691](https://github.com/qupaya/ng-mockito/commit/c8986914f41a04020120106016daac3be7efad25))
+
 ## [1.0.2](https://github.com/qupaya/ng-mockito/compare/v1.0.1...v1.0.2) (2020-10-29)
 
 
