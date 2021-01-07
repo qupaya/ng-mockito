@@ -52,7 +52,7 @@ when(mockTestComponent.someOutput).thenReturn(testComponentOutput);
                       //    Note, that if you don't provide a default stub for someOutput
                       //    here, mockNg will create a default EventEmitter stub for you.
 
-mockNg(SomeChildComponent);
+mockNg(mockTestComponent);
 ```
 
 Instead of `mockNg`, you can also use the more specific function `mockComponent`, `mockDirective`, `mockPipe` and `mockProvider`.
