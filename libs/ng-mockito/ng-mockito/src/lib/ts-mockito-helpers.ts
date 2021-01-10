@@ -19,12 +19,27 @@ export function createTypeAndMock<T>(
   } else if (isClass(typeOrMock)) {
     return { type: typeOrMock as Type<T>, mock: mock(typeOrMock) };
   } else {
+    const functionNameDetail = getFunctionNameDetail(typeOrMock);
     throw new Error(
-      `Given argument had invalid type: ${typeof typeOrMock}. Please provide a class or a ts-mockito mock.`
+      `Given argument had invalid type: ${typeof typeOrMock}${functionNameDetail}. Please provide a class or a ts-mockito mock.`
     );
   }
 }
 
+function getFunctionNameDetail(typeOrMock: any): string {
+  if (typeof typeOrMock !== 'function') {
+    return '';
+  }
+
+  if (typeOrMock.name === '') {
+    const functionInChars = typeOrMock.toString();
+    const firstCharsOfFunction = functionInChars.substring(0, 50);
+    return ` (${firstCharsOfFunction}...)`;
+  }
+
+  return ` (${typeOrMock.name})`;
+}
+getFunctionNameDetail.toString;
 function isClass(anything: unknown) {
   try {
     return (

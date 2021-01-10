@@ -34,6 +34,24 @@ describe('ts-mockito helpers', () => {
       }
     );
 
+    it.each`
+      argument                        | description         | expectedMessage
+      ${function myTestFunction() {}} | ${'named function'} | ${/myTestFunction/}
+      ${() => {
+  console.log('sample code');
+  console.log('2 sample code');
+}} | ${'arrow function'} | ${/sample code/}
+      ${function () {
+  console.log('sample code');
+  console.log('2 sample code');
+}} | ${'nameless function'} | ${/sample code/}
+    `(
+      'when using an $description should include $expectedMessage as info when throwing an error',
+      ({ argument, expectedMessage }) => {
+        expect(() => createTypeAndMock(argument)).toThrowError(expectedMessage);
+      }
+    );
+
     it('should create type and mock if type is given', () => {
       class Test {
         test() {
