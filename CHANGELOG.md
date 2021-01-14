@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/qupaya/ng-mockito/compare/v1.0.3...v1.1.0) (2021-01-14)
+
+
+### Features
+
+* **ng-mockito:** function name or details in mock creation throw error ([83393c5](https://github.com/qupaya/ng-mockito/commit/83393c597ffda57161caf5e71a21fcbd57eb204a))
+
 ## [1.0.3](https://github.com/qupaya/ng-mockito/compare/v1.0.2...v1.0.3) (2020-11-20)
 
 
