@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/qupaya/ng-mockito/compare/v1.1.1...v1.2.0) (2021-01-21)
+
+
+### Features
+
+* **ng-mockito:** add mockAll function to create multiple default mocks ([40909e3](https://github.com/qupaya/ng-mockito/commit/40909e3d86ac9d65b80dd676349bd172060685af)), closes [#21](https://github.com/qupaya/ng-mockito/issues/21)
+
 ## [1.1.1](https://github.com/qupaya/ng-mockito/compare/v1.1.0...v1.1.1) (2021-01-21)
 
 
