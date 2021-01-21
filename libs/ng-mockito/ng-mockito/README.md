@@ -6,10 +6,20 @@
 
 # ng-mockito
 
-Mocking for Angular, based on [ts-mockito](https://github.com/NagRock/ts-mockito). If you use ts-mockito for your Angular project, you'll love ng-mockito! It also integrate nicely with [@testing-library/angular](https://github.com/testing-library/angular-testing-library).
+Mocking for Angular, based on [ts-mockito](https://github.com/NagRock/ts-mockito). If you use ts-mockito for your Angular project, you'll love ng-mockito! It also integrates nicely with [@testing-library/angular](https://github.com/testing-library/angular-testing-library).
 
 As a layer on top of ts-mockito, it's 100% compatible to it. You're still working with the usual functions (`when`, `verify`, ...).
 It just makes your life easier when preparing mocks for Angular-specific types.
+
+## Installation
+
+To use this package, install it as development dependency:
+
+`npm install ng-mockito --save-dev`
+
+Additionally, install ts-mockito in the same way, if not done already (it is a peer dependency of ng-mockito):
+
+`npm install ts-mockito --save-dev`
 
 ## Features
 
