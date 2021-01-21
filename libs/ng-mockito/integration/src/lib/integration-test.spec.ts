@@ -1,6 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { render, screen } from '@testing-library/angular';
 import {
+  mockAll,
   mockComponent,
   mockDirective,
   mockNg,
@@ -36,6 +37,25 @@ describe('IntegrationTest', () => {
         mockNg(IntegrationTestDirective),
       ],
       providers: [mockNg(IntegrationTestService)],
+    });
+
+    detectChanges();
+
+    expect(screen.getByTestId('valueFromService')).toHaveTextContent('');
+    expect(screen.getByTestId('valueFromChildComponent')).toHaveTextContent(
+      'real initial value' // default EventEmitter mock does not emit
+    );
+    expect(screen.getByTestId('valueFromPipe')).toHaveTextContent('');
+  });
+
+  it('should mock all the things with default values using mockAll', async () => {
+    const { detectChanges } = await render(IntegrationTestComponent, {
+      declarations: mockAll(
+        IntegrationTestChildComponent,
+        IntegrationTestPipe,
+        IntegrationTestDirective
+      ),
+      providers: mockAll(IntegrationTestService),
     });
 
     detectChanges();
