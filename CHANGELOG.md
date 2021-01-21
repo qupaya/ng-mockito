@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/qupaya/ng-mockito/compare/v1.1.0...v1.1.1) (2021-01-21)
+
+
+### Bug Fixes
+
+* **ng-mockito:** allow transpiled classes to be mocked ([cafecfe](https://github.com/qupaya/ng-mockito/commit/cafecfe71b391dc7b429956b259771a4fe244a06)), closes [#22](https://github.com/qupaya/ng-mockito/issues/22)
+
 # [1.1.0](https://github.com/qupaya/ng-mockito/compare/v1.0.3...v1.1.0) (2021-01-14)
 
 
