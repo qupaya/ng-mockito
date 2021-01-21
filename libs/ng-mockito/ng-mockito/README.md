@@ -57,6 +57,19 @@ mockNg(mockTestComponent);
 
 Instead of `mockNg`, you can also use the more specific function `mockComponent`, `mockDirective`, `mockPipe` and `mockProvider`.
 
+Finally, use `mockAll` to **create multiple default mocks with a single function call**:
+
+<!-- prettier-ignore -->
+```typescript
+TestBed.configureTestingModule({
+  declarations: [
+    ComponentUnderTest,
+    ...mockAll(SomeChildComponent, SomePipe, SomeDirective)
+  ],
+  providers: mockAll(SomeService, OtherService)
+});
+```
+
 ## Further reading
 
 For more usage examples in combination with [@testing-library/angular](https://github.com/testing-library/angular-testing-library), please have a look at the [spec file in our GitHub repo](https://github.com/qupaya/ng-mockito/blob/main/libs/ng-mockito/integration/src/lib/integration-test.spec.ts).
