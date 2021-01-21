@@ -39,12 +39,13 @@ function getFunctionNameDetail(typeOrMock: any): string {
 
   return ` (${typeOrMock.name})`;
 }
-getFunctionNameDetail.toString;
+
 function isClass(anything: unknown) {
   try {
     return (
       typeof anything === 'function' &&
-      anything.toString()?.trim().startsWith('class')
+      ('ctorParameters' in anything ||
+        anything.toString()?.trim().startsWith('class'))
     );
   } catch (e) {
     throw new Error(

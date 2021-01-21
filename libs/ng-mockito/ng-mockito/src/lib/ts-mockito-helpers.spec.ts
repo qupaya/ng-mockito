@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+import { HttpClient } from '@angular/common/http';
 import { instance, mock, when } from 'ts-mockito';
 import { createTypeAndMock, isStubbed } from './ts-mockito-helpers';
 
@@ -77,6 +78,10 @@ describe('ts-mockito helpers', () => {
       expect(typeAndMock.type).toBe(Test);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect((typeAndMock.mock as any).__tsmockitoMocker.clazz).toBe(Test);
+    });
+
+    it('should accept transpiled classes', () => {
+      expect(() => createTypeAndMock(HttpClient)).not.toThrow();
     });
   });
 
