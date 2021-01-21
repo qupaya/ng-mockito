@@ -1,3 +1,4 @@
+export * from './lib/mock-all';
 export * from './lib/mock-component';
 export * from './lib/mock-directive';
 export * from './lib/mock-ng';
