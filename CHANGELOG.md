@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/qupaya/ng-mockito/compare/v1.2.0...v1.2.1) (2021-01-24)
+
+
+### Bug Fixes
+
+* **ng-mockito:** allow Angular >= v11 as peer dependency ([d26e97b](https://github.com/qupaya/ng-mockito/commit/d26e97b7556a819cbd1672a5998cdc076e7d8652)), closes [#26](https://github.com/qupaya/ng-mockito/issues/26)
+
 # [1.2.0](https://github.com/qupaya/ng-mockito/compare/v1.1.1...v1.2.0) (2021-01-21)
 
 
