@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { IntegrationTestService } from './integration-test.service';
 import { INTEGRATION_TEST_INTERFACE_TOKEN } from './injection-tokens';
 import {
