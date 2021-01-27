@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Type } from '@angular/core';
+import { InjectionToken, Type } from '@angular/core';
 import { mock } from 'ts-mockito';
 import { Mocker } from 'ts-mockito/lib/Mock';
 import { TypeAndMock, TypeOrMock } from './types';
@@ -13,13 +13,25 @@ export function createTypeAndMock<T>(
       'Given argument was null or undefined. Please provide a class or a ts-mockito mock.'
     );
   }
+  if (typeOrMock instanceof InjectionToken) {
+    throw new Error(
+      `Given object was an InjectionToken.
+      To mock InjectionTokens, please provide it like this: [TheInjectionToken, TheClassUsingIt].
 
-  if (typeof typeOrMock === 'object') {
+      Examples:
+      - mockNg([DOCUMENT, MyService])
+      - mockToken([DOCUMENT, MyService])
+      - mockNg([DOCUMENT, MyService], doc => when(doc.querySelector(anyString()).thenReturn({} as Element) ))
+      - mockNg([DOCUMENT, MyService], {use: predefinedDocumentMock})
+      `
+    );
+  } else if (typeof typeOrMock === 'object') {
     return { type: getMockedClass(typeOrMock), mock: typeOrMock };
   } else if (isClass(typeOrMock)) {
     return { type: typeOrMock as Type<T>, mock: mock(typeOrMock) };
   } else {
     const functionNameDetail = getFunctionNameDetail(typeOrMock);
+
     throw new Error(
       `Given argument had invalid type: ${typeof typeOrMock}${functionNameDetail}. Please provide a class or a ts-mockito mock.`
     );
@@ -81,6 +93,10 @@ export function noOp() {
 export function isStubbed<T>(mock: T, propertyName: string) {
   const mocker = getTsMockitoMocker(mock);
   return propertyName in mocker['methodStubCollections'];
+}
+
+export function isMock(maybeMock: any): boolean {
+  return '__tsmockitoMocker' in maybeMock;
 }
 
 function getTsMockitoMocker<T>(mock: T): Mocker {

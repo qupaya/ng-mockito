@@ -1,10 +1,10 @@
 import {
-  Type,
-  Pipe,
-  ɵReflectionCapabilities,
   Component,
-  Injectable,
   Directive,
+  Injectable,
+  Pipe,
+  Type,
+  ɵReflectionCapabilities,
 } from '@angular/core';
 
 type DecoratorName = 'Pipe' | 'Component' | 'Directive' | 'Injectable';

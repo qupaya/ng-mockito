@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { InjectionToken } from '@angular/core';
 import { instance, mock, when } from 'ts-mockito';
-import { createTypeAndMock, isStubbed } from './ts-mockito-helpers';
+import { createTypeAndMock, isStubbed, isMock } from './ts-mockito-helpers';
 
 describe('ts-mockito helpers', () => {
   describe('createTypeAndMock', () => {
@@ -83,6 +85,19 @@ describe('ts-mockito helpers', () => {
     it('should accept transpiled classes', () => {
       expect(() => createTypeAndMock(HttpClient)).not.toThrow();
     });
+
+    it.each`
+      argument                      | description
+      ${new InjectionToken('test')} | ${'custom injection token'}
+      ${DOCUMENT}                   | ${'pre-defined injection token'}
+    `(
+      'when trying to mock $description it should throw an error message aiding the user use correct syntax',
+      ({ argument }: { argument: InjectionToken<unknown> }) => {
+        expect(() => createTypeAndMock(argument)).toThrow(
+          /Given object was an InjectionToken.\s*To mock InjectionTokens, please provide it like this: \[TheInjectionToken, TheClassUsingIt\]./
+        );
+      }
+    );
   });
 
   describe('isStubbed', () => {
@@ -114,6 +129,36 @@ describe('ts-mockito helpers', () => {
 
       expect(isStubbed(mockTest, 'testProperty')).toBe(false);
       expect(isStubbed(mockTest, 'testFunction')).toBe(false);
+    });
+  });
+
+  describe('isMock', () => {
+    it('should recognize a class mock as mock', () => {
+      const mockTest = mock(
+        class Test {
+          testProperty = '';
+          testFunction() {
+            return '';
+          }
+        }
+      );
+      expect(isMock(mockTest)).toBeTruthy();
+    });
+
+    it('should recognize an interface mock as mock', () => {
+      // eslint-disable-next-line @typescript-eslint/ban-types
+      const mockTest = mock<{}>();
+      expect(isMock(mockTest)).toBeTruthy();
+    });
+
+    it('should recognize a class instance as not a mock', () => {
+      const mockTest = new (class Test {
+        testProperty = '';
+        testFunction() {
+          return '';
+        }
+      })();
+      expect(isMock(mockTest)).toBeFalsy();
     });
   });
 });

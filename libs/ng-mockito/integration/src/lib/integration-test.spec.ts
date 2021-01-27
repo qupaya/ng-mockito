@@ -8,12 +8,17 @@ import {
   mockPipe,
   mockProvider,
 } from 'ng-mockito';
-import { mock, when } from 'ts-mockito';
+import { anyString, mock, when } from 'ts-mockito';
+import {
+  INTEGRATION_TEST_STRING_TOKEN,
+  INTEGRATION_TEST_INTERFACE_TOKEN,
+} from './injection-tokens';
 import { IntegrationTestChildComponent } from './integration-test-child.component';
 import { IntegrationTestComponent } from './integration-test.component';
 import { IntegrationTestDirective } from './integration-test.directive';
 import { IntegrationTestPipe } from './integration-test.pipe';
 import { IntegrationTestService } from './integration-test.service';
+import { IntegrationTestInterface } from './injection-tokens';
 
 describe('IntegrationTest', () => {
   it('should create', async () => {
@@ -24,7 +29,11 @@ describe('IntegrationTest', () => {
           mockNg(IntegrationTestPipe),
           mockNg(IntegrationTestDirective),
         ],
-        providers: [mockNg(IntegrationTestService)],
+        providers: [
+          mockNg(IntegrationTestService),
+          mockNg([INTEGRATION_TEST_STRING_TOKEN, IntegrationTestComponent]),
+          mockNg([INTEGRATION_TEST_INTERFACE_TOKEN, IntegrationTestComponent]),
+        ],
       })
     ).resolves.toBeDefined();
   });
@@ -36,16 +45,37 @@ describe('IntegrationTest', () => {
         mockNg(IntegrationTestPipe),
         mockNg(IntegrationTestDirective),
       ],
-      providers: [mockNg(IntegrationTestService)],
+      providers: [
+        mockNg(IntegrationTestService),
+        mockNg([INTEGRATION_TEST_STRING_TOKEN, IntegrationTestComponent]),
+        mockNg([INTEGRATION_TEST_INTERFACE_TOKEN, IntegrationTestComponent]),
+      ],
     });
 
     detectChanges();
 
-    expect(screen.getByTestId('valueFromService')).toHaveTextContent('');
+    expect(screen.getByTestId('valueFromService').textContent?.trim()).toEqual(
+      ''
+    );
     expect(screen.getByTestId('valueFromChildComponent')).toHaveTextContent(
       'real initial value' // default EventEmitter mock does not emit
     );
-    expect(screen.getByTestId('valueFromPipe')).toHaveTextContent('');
+    expect(screen.getByTestId('valueFromPipe').textContent?.trim()).toEqual('');
+    expect(
+      screen
+        .getByTestId('someFunctionValueFromInterfaceToken')
+        .textContent?.trim()
+    ).toEqual('');
+
+    // FIXME: This is a special case, because interfaces don't exist at runtime. Due to this, default values of an interface property
+    // can't be recognized by ts-mockito. Instead, a Proxy is used to collect this information at call time.
+    // Unfortunately, the toString() method of the ts-mockito Proxy will return the function definition itself
+    // ("function () { var args = ....; })") as default if interpreted as string.
+    // I have no idea how or even if this can be fixed in either ts-mockito or here.
+    // The user should be encouraged to always provide custom default values.
+    expect(
+      screen.getByTestId('somePropertyValueFromInterfaceToken')
+    ).not.toHaveTextContent('real');
   });
 
   it('should mock all the things with default values using mockAll', async () => {
@@ -55,16 +85,30 @@ describe('IntegrationTest', () => {
         IntegrationTestPipe,
         IntegrationTestDirective
       ),
-      providers: mockAll(IntegrationTestService),
+      providers: mockAll(IntegrationTestService, [
+        INTEGRATION_TEST_INTERFACE_TOKEN,
+        IntegrationTestComponent,
+      ]),
     });
 
     detectChanges();
 
-    expect(screen.getByTestId('valueFromService')).toHaveTextContent('');
+    expect(screen.getByTestId('valueFromService').textContent?.trim()).toEqual(
+      ''
+    );
     expect(screen.getByTestId('valueFromChildComponent')).toHaveTextContent(
       'real initial value' // default EventEmitter mock does not emit
     );
-    expect(screen.getByTestId('valueFromPipe')).toHaveTextContent('');
+    expect(screen.getByTestId('valueFromPipe').textContent?.trim()).toEqual('');
+    expect(
+      screen
+        .getByTestId('someFunctionValueFromInterfaceToken')
+        .textContent?.trim()
+    ).toEqual('');
+    // see comment in 'should mock all the things with default values'
+    expect(
+      screen.getByTestId('somePropertyValueFromInterfaceToken')
+    ).not.toHaveTextContent('real');
   });
 
   it('should mock all the things with stubbed values', async () => {
@@ -91,6 +135,19 @@ describe('IntegrationTest', () => {
         mockNg(IntegrationTestService, (m) =>
           when(m.getSomeValue()).thenReturn('mocked service output')
         ),
+        mockNg([INTEGRATION_TEST_STRING_TOKEN, IntegrationTestComponent], {
+          use: 'mocked string token text',
+        }),
+
+        mockNg(
+          [INTEGRATION_TEST_INTERFACE_TOKEN, IntegrationTestComponent],
+          (m) => {
+            when(m.someValue).thenReturn('mocked someValue text');
+            when(m.someFunction(anyString())).thenReturn(
+              'mocked someFunction text'
+            );
+          }
+        ),
       ],
     });
 
@@ -110,6 +167,15 @@ describe('IntegrationTest', () => {
     expect(screen.getByTestId('valueFromDirective')).toHaveTextContent(
       'mocked directive output'
     );
+    expect(screen.getByTestId('valueFromStringToken')).toHaveTextContent(
+      'mocked string token text'
+    );
+    expect(
+      screen.getByTestId('someFunctionValueFromInterfaceToken')
+    ).toHaveTextContent('mocked someFunction text');
+    expect(
+      screen.getByTestId('somePropertyValueFromInterfaceToken')
+    ).toHaveTextContent('mocked someValue text');
   });
 
   it('should mock all the things with stubbed values (using pre-defined mocks)', async () => {
@@ -131,13 +197,26 @@ describe('IntegrationTest', () => {
       mockDirectiveOutput
     );
 
+    const mockIntegrationTestInterface = mock<IntegrationTestInterface>();
+    when(mockIntegrationTestInterface.someValue).thenReturn(
+      'mocked someValue text'
+    );
+    when(mockIntegrationTestInterface.someFunction(anyString())).thenReturn(
+      'mocked someFunction text'
+    );
+
     const { detectChanges } = await render(IntegrationTestComponent, {
       declarations: [
         mockNg(mockChildComponent),
         mockNg(mockTestPipe),
         mockNg(mockTestDirective),
       ],
-      providers: [mockNg(mockService)],
+      providers: [
+        mockNg(mockService),
+        mockNg([INTEGRATION_TEST_INTERFACE_TOKEN, IntegrationTestComponent], {
+          use: mockIntegrationTestInterface,
+        }),
+      ],
     });
 
     mockComponentOutput.emit('mocked child component output');
@@ -157,6 +236,12 @@ describe('IntegrationTest', () => {
     expect(screen.getByTestId('valueFromDirective')).toHaveTextContent(
       'mocked directive output'
     );
+    expect(
+      screen.getByTestId('someFunctionValueFromInterfaceToken')
+    ).toHaveTextContent('mocked someFunction text');
+    expect(
+      screen.getByTestId('somePropertyValueFromInterfaceToken')
+    ).toHaveTextContent('mocked someValue text');
   });
 
   it('should mock all the things with stubbed values (using pre-defined mocks and specific mock functions)', async () => {
