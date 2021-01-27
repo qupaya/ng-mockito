@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/qupaya/ng-mockito/compare/v1.2.1...v1.3.0) (2021-01-27)
+
+
+### Features
+
+* **ng-mockito:** add support for injection tokens ([8e2e725](https://github.com/qupaya/ng-mockito/commit/8e2e7250e817aa2600ca481f4f929dcc12956da3)), closes [#19](https://github.com/qupaya/ng-mockito/issues/19)
+
 ## [1.2.1](https://github.com/qupaya/ng-mockito/compare/v1.2.0...v1.2.1) (2021-01-24)
 
 
