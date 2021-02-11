@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, EventEmitter, Type } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { instance, when } from 'ts-mockito';
 import {
   getDirectiveProperties,
   getDecoratorMetadata,
 } from './ng-decorator-helpers';
 import { createTypeAndMock, noOp, isStubbed } from './ts-mockito-helpers';
-import { SetupMockFn, TypeOrMock } from './types';
+import { SetupMockFn, TypeOrMock, Type } from './types';
 
 /**
  * Returns a mocked version of the given component.

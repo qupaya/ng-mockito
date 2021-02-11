@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, Renderer2 } from '@angular/core';
 import { instance, mock, when } from 'ts-mockito';
 import { createTypeAndMock, isStubbed, isMock } from './ts-mockito-helpers';
 
@@ -55,12 +55,21 @@ describe('ts-mockito helpers', () => {
       }
     );
 
-    it('should create type and mock if type is given', () => {
+    it('should create type and mock if class is given', () => {
       class Test {
         test() {
           throw new Error('real implementation used.');
         }
       }
+      const typeAndMock = createTypeAndMock(Test);
+
+      expect(typeAndMock.type).toBe(Test);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      expect((typeAndMock.mock as any).__tsmockitoMocker.clazz).toBe(Test);
+    });
+
+    it('should create type and mock if abstract class is given', () => {
+      abstract class Test {}
       const typeAndMock = createTypeAndMock(Test);
 
       expect(typeAndMock.type).toBe(Test);
@@ -84,6 +93,10 @@ describe('ts-mockito helpers', () => {
 
     it('should accept transpiled classes', () => {
       expect(() => createTypeAndMock(HttpClient)).not.toThrow();
+    });
+
+    it('should accept transpiled abstract classes', () => {
+      expect(() => createTypeAndMock(Renderer2)).not.toThrow();
     });
 
     it.each`

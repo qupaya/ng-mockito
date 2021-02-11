@@ -1,8 +1,8 @@
-import { Pipe, Type } from '@angular/core';
+import { Pipe } from '@angular/core';
 import { instance } from 'ts-mockito';
 import { getDecoratorMetadata } from './ng-decorator-helpers';
 import { createTypeAndMock, noOp } from './ts-mockito-helpers';
-import { SetupMockFn, TypeOrMock } from './types';
+import { SetupMockFn, TypeOrMock, Type } from './types';
 
 /**
  * Returns a mocked version of the given pipe.
