@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/qupaya/ng-mockito/compare/v1.3.0...v1.3.1) (2021-02-11)
+
+
+### Bug Fixes
+
+* **ng-mockito:** allow mocking of transpiled abstract classes like Renderer2 ([ea62a95](https://github.com/qupaya/ng-mockito/commit/ea62a95092f52728e3d07dbf5b09b5a1b4121665))
+
 # [1.3.0](https://github.com/qupaya/ng-mockito/compare/v1.2.1...v1.3.0) (2021-01-27)
 
 
