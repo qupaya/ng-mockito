@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { InjectionToken, Type } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 import { mock } from 'ts-mockito';
 import { Mocker } from 'ts-mockito/lib/Mock';
-import { TypeAndMock, TypeOrMock } from './types';
+import { TypeAndMock, TypeOrMock, Type } from './types';
 
 export function createTypeAndMock<T>(
   typeOrMock: TypeOrMock<T>
@@ -26,7 +26,7 @@ export function createTypeAndMock<T>(
       `
     );
   } else if (typeof typeOrMock === 'object') {
-    return { type: getMockedClass(typeOrMock), mock: typeOrMock };
+    return { type: getMockedClass(typeOrMock), mock: typeOrMock as T };
   } else if (isClass(typeOrMock)) {
     return { type: typeOrMock as Type<T>, mock: mock(typeOrMock) };
   } else {
@@ -53,11 +53,17 @@ function getFunctionNameDetail(typeOrMock: any): string {
 }
 
 function isClass(anything: unknown) {
+  function startsWithUppercaseLetter(s?: string) {
+    // as a last resort, we trust that constructor functions start with upper-case letters
+    return !!s && s.length > 0 && s[0].toUpperCase() === s[0];
+  }
+
   try {
     return (
       typeof anything === 'function' &&
       ('ctorParameters' in anything ||
-        anything.toString()?.trim().startsWith('class'))
+        anything.toString()?.trim().startsWith('class') ||
+        startsWithUppercaseLetter(anything.name))
     );
   } catch (e) {
     throw new Error(

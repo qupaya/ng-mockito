@@ -1,4 +1,4 @@
-import { FactoryProvider, InjectionToken, Type } from '@angular/core';
+import { FactoryProvider, InjectionToken } from '@angular/core';
 import { mockComponent } from './mock-component';
 import { mockDirective } from './mock-directive';
 import { mockPipe } from './mock-pipe';
@@ -6,7 +6,7 @@ import { mockProvider } from './mock-provider';
 import { mockToken, TokenWithClient, TokenConfigOrSetup } from './mock-token';
 import { getDecoratorNames } from './ng-decorator-helpers';
 import { createTypeAndMock, noOp } from './ts-mockito-helpers';
-import { SetupMockFn, TypeOrMock } from './types';
+import { SetupMockFn, TypeOrMock, Type } from './types';
 
 type TypeOrMockButNotArrayLike<T> = T extends unknown[]
   ? never // exclude array-likes, otherwise TokenWithClient could be inferred as TypeOrMock

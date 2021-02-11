@@ -1,10 +1,11 @@
+import { Type } from './types';
 import {
   Component,
   Directive,
   Injectable,
   Pipe,
-  Type,
   ɵReflectionCapabilities,
+  Type as NgType,
 } from '@angular/core';
 
 type DecoratorName = 'Pipe' | 'Component' | 'Directive' | 'Injectable';
@@ -22,7 +23,9 @@ type Decorator<D> = D extends 'Pipe'
 const reflection = new ɵReflectionCapabilities();
 
 export function getDecoratorNames<T>(decoratedClass: Type<T>): DecoratorName[] {
-  return reflection.annotations(decoratedClass).map((a) => a.ngMetadataName);
+  return reflection
+    .annotations(decoratedClass as NgType<T>)
+    .map((a) => a.ngMetadataName);
 }
 
 export function getDecoratorMetadata<T, D extends DecoratorName>(
@@ -30,7 +33,9 @@ export function getDecoratorMetadata<T, D extends DecoratorName>(
   decoratorName: D
 ): Decorator<D> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const annotations: any[] = reflection.annotations(decoratedClass);
+  const annotations: any[] = reflection.annotations(
+    decoratedClass as NgType<T>
+  );
   const decorator = annotations.find((a) => a.ngMetadataName === decoratorName);
   if (!decorator) {
     throw new Error(

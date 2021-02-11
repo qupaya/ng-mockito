@@ -1,3 +1,4 @@
+import { Type } from './types';
 import {
   Component,
   Directive,
@@ -7,7 +8,6 @@ import {
   Output,
   Pipe,
   PipeTransform,
-  Type,
 } from '@angular/core';
 import {
   getDecoratorMetadata,
