@@ -12,9 +12,10 @@ import {
 import { SetupMockFn } from './types';
 import { isMock } from './ts-mockito-helpers';
 
-export type TokenWithClient<T, U> = Readonly<
-  [token: InjectionToken<T>, client: Type<U>]
->;
+/**
+ * Tuple of an injection token and its client (e.g. the service injecting this token).
+ */
+export type TokenWithClient<T, U> = Readonly<[InjectionToken<T>, Type<U>]>;
 
 export type TokenConfigValue<T> = { use: T };
 
