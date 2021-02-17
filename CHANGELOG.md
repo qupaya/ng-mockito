@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/qupaya/ng-mockito/compare/v1.3.1...v1.3.2) (2021-02-17)
+
+
+### Bug Fixes
+
+* **ng-mockito:** don't use named tuples, because they break projects with typescript versions below v4.0.0 ([77232d1](https://github.com/qupaya/ng-mockito/commit/77232d1368588cb194e0f0e1619144273dacad75))
+
 ## [1.3.1](https://github.com/qupaya/ng-mockito/compare/v1.3.0...v1.3.1) (2021-02-11)
 
 
