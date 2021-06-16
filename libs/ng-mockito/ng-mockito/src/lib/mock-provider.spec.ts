@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import * as tsMockito from 'ts-mockito';
 import { mockNg } from './mock-ng';
 import { mockProvider as _mockProvider } from './mock-provider';
+import { ActivatedRoute } from '@angular/router';
 
 describe.each`
   mockProvider     | description
@@ -35,7 +36,15 @@ describe.each`
       expect(() => mockProvider('test')).toThrowError(/invalid type./);
     });
 
-    describe('integration', () => {
+    it('should mock ActivatedRoute', () => {
+      TestBed.configureTestingModule({
+        providers: [mockProvider(ActivatedRoute)],
+      });
+
+      expect(TestBed.inject(ActivatedRoute)).toBeDefined();
+    });
+
+    describe('with test service', () => {
       @Injectable({
         providedIn: 'root',
       })
