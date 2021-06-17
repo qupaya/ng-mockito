@@ -57,11 +57,9 @@ export function mockNg<T, U>(
     return mockDirective(mock, setup);
   }
 
-  if (decoratorNames.includes('Injectable')) {
-    return mockProvider(mock, setup);
-  }
-
-  throw new Error('Unknown decorator.');
+  // Injectable decorator or no decorator (in which case
+  // we guess that it must be a class to be provided, like ActivatedRoute)
+  return mockProvider(mock, setup);
 }
 
 function isTokenWithClient<T, U>(
