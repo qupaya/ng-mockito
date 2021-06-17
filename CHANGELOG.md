@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/qupaya/ng-mockito/compare/v1.3.2...v1.3.3) (2021-06-17)
+
+
+### Bug Fixes
+
+* **ng-mockito:** support providing classes without Injectable decorator in mockNg ([f223e6a](https://github.com/qupaya/ng-mockito/commit/f223e6a15dba6d93703e46edb9799d443eb2d501)), closes [#31](https://github.com/qupaya/ng-mockito/issues/31)
+
 ## [1.3.2](https://github.com/qupaya/ng-mockito/compare/v1.3.1...v1.3.2) (2021-02-17)
 
 
