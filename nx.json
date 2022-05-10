@@ -57,5 +57,13 @@
       "unitTestRunner": "jest",
       "strict": true
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }
