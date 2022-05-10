@@ -3,8 +3,8 @@
   "description": "qupaya ng-mockito monorepository",
   "version": "0.0.0",
   "engines": {
-    "node": "^16.13.0",
-    "npm": "v8"
+    "node": "^14",
+    "npm": "v6"
   },
   "license": "MIT",
   "scripts": {
@@ -29,7 +29,7 @@
     "format": "nx format:write",
     "format:write": "nx format:write",
     "format:check": "nx format:check",
-    "update": "ng update @nrwl/workspace",
+    "update": "nx migrate latest",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help"
@@ -44,7 +44,7 @@
     "@angular/platform-browser": "^10.1.0",
     "@angular/platform-browser-dynamic": "^10.1.0",
     "@angular/router": "^10.1.0",
-    "@nrwl/angular": "10.3.1",
+    "@nrwl/angular": "10.4.15",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.2"
@@ -56,12 +56,13 @@
     "@angular/language-service": "^10.1.0",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-angular": "^11.0.0",
-    "@nrwl/cli": "10.3.1",
-    "@nrwl/cypress": "10.3.1",
-    "@nrwl/eslint-plugin-nx": "10.3.1",
-    "@nrwl/jest": "10.3.1",
-    "@nrwl/nx-cloud": "latest",
-    "@nrwl/workspace": "10.3.1",
+    "@nrwl/cli": "10.4.15",
+    "@nrwl/cypress": "10.4.15",
+    "@nrwl/eslint-plugin-nx": "10.4.15",
+    "@nrwl/jest": "10.4.15",
+    "@nrwl/nx-cloud": "14.0.3",
+    "@nrwl/tao": "10.4.15",
+    "@nrwl/workspace": "10.4.15",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@testing-library/angular": "^10.1.2",
@@ -82,7 +83,7 @@
     "jest-preset-angular": "8.3.1",
     "lint-staged": "^10.4.2",
     "ng-packagr": "^10.1.0",
-    "prettier": "^2.2.1",
+    "prettier": "2.1.2",
     "semantic-release": "^17.2.1",
     "ts-jest": "26.4.0",
     "ts-mockito": "^2.6.1",
