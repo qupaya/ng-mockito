@@ -3,8 +3,8 @@
   "description": "qupaya ng-mockito monorepository",
   "version": "0.0.0",
   "engines": {
-    "node": "^14",
-    "npm": "v7"
+    "node": "v16",
+    "npm": "v8"
   },
   "license": "MIT",
   "scripts": {
