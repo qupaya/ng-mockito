@@ -2,6 +2,10 @@
   "name": "qupaya",
   "description": "qupaya ng-mockito monorepository",
   "version": "0.0.0",
+  "engines": {
+    "node": "^16.13.0",
+    "npm": "v8"
+  },
   "license": "MIT",
   "scripts": {
     "ng": "nx",
