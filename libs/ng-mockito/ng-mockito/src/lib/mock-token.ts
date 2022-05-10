@@ -23,7 +23,6 @@ type ValueType =
   | boolean
   | string
   | number
-  | bigint
   | symbol
   | unknown[]
   | ((...args: any) => any);
