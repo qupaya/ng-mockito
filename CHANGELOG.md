@@ -1,3 +1,23 @@
+# [2.0.0](https://github.com/qupaya/ng-mockito/compare/v1.3.3...v2.0.0) (2022-05-10)
+
+
+### Bug Fixes
+
+* **ng-mockito:** drop support of bigint as value type ([104b50f](https://github.com/qupaya/ng-mockito/commit/104b50f08e1273f094d74e9da1df84be7433de5f))
+
+
+### Features
+
+* **ng-mockito:** bump peerDeps of published lib to support angular >= 12 ([d03beed](https://github.com/qupaya/ng-mockito/commit/d03beed1b58fdddd2fb50948d9c5947ab830fde0))
+* **ng-mockito:** distribute as Ivy lib ([7c90cd3](https://github.com/qupaya/ng-mockito/commit/7c90cd3b1899886b202e127f192639699a455e4d)), closes [#35](https://github.com/qupaya/ng-mockito/issues/35)
+* **ng-mockito:** drop support for symbol injection tokens because they can't be distinguished from interfaces anymore ([755c492](https://github.com/qupaya/ng-mockito/commit/755c492ede36c38ebe56ec8a45156fc0de94627b))
+
+
+### BREAKING CHANGES
+
+* **ng-mockito:** CHANGE
+* **ng-mockito:** CHANGE
+
 ## [1.3.3](https://github.com/qupaya/ng-mockito/compare/v1.3.2...v1.3.3) (2021-06-17)
 
 
