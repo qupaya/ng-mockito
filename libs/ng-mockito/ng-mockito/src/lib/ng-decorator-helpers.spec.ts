@@ -1,3 +1,6 @@
+/* eslint-disable @angular-eslint/directive-selector */
+/* eslint-disable @angular-eslint/use-pipe-transform-interface */
+/* eslint-disable @angular-eslint/no-input-rename */
 import { Type } from './types';
 import {
   Component,
@@ -19,7 +22,6 @@ describe('Angular decorator helpers', () => {
   describe('getDecoratorNames', () => {
     it('should get decorator names', () => {
       @Injectable()
-      @Component({})
       @Pipe({ name: 'test' })
       class TestPipe implements PipeTransform {
         transform() {
