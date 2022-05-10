@@ -21,16 +21,9 @@
         "accessToken": "NGM1NDkyZDYtZmUwOC00ZDMzLThkZDQtMWRhZDliOGUwNjRkfHJlYWQtd3JpdGU=",
         "cacheableOperations": ["build", "test", "lint", "e2e"],
         "canTrackAnalytics": false,
-        "showUsageWarnings": true
+        "showUsageWarnings": true,
+        "parallel": 1
       }
-    }
-  },
-  "projects": {
-    "ng-mockito": {
-      "tags": ["scope:ng-mockito"]
-    },
-    "ng-mockito-integration": {
-      "tags": ["scope:ng-mockito"]
     }
   },
   "cli": {

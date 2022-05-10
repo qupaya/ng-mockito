@@ -38,7 +38,8 @@
         "@schematics/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": ["scope:ng-mockito"]
     },
     "ng-mockito-integration": {
       "projectType": "library",
@@ -65,7 +66,8 @@
         "@schematics/angular:component": {
           "style": "scss"
         }
-      }
+      },
+      "tags": ["scope:ng-mockito"]
     }
   }
 }
