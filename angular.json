@@ -30,7 +30,8 @@
           "options": {
             "jestConfig": "libs/ng-mockito/ng-mockito/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/ng-mockito/ng-mockito"]
         }
       },
       "schematics": {
@@ -56,7 +57,8 @@
           "options": {
             "jestConfig": "libs/ng-mockito/integration/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/ng-mockito/integration"]
         }
       },
       "schematics": {
@@ -65,30 +67,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest",
-      "strict": true
-    }
-  },
-  "defaultProject": "ng-mockito"
+  }
 }
