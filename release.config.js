@@ -1,5 +1,9 @@
 module.exports = {
-  branches: ['main', { name: 'alpha', prerelease: true }],
+  branches: [
+    'main',
+    { name: 'next', prerelease: true },
+    { name: 'alpha', prerelease: true },
+  ],
   preset: 'angular',
   plugins: [
     [

@@ -63,18 +63,6 @@ describe('InjectionToken helpers', () => {
       ).toThrow(/Could not find a constructor parameter/i);
     });
 
-    it('should get parameter for interface injection token', () => {
-      expect(
-        getConstructorParameterTypeOfInjectionToken(
-          TestService,
-          TEST_TOKEN_INTERFACE
-        )
-      ).toEqual({
-        type: 'interface',
-        optional: false,
-      });
-    });
-
     it('should get parameter for class injection token', () => {
       expect(
         getConstructorParameterTypeOfInjectionToken(

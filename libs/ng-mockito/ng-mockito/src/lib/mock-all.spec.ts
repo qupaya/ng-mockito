@@ -1,3 +1,6 @@
+/* eslint-disable @angular-eslint/component-selector */
+/* eslint-disable @angular-eslint/directive-selector */
+/* eslint-disable @angular-eslint/use-pipe-transform-interface */
 import {
   Component,
   Directive,

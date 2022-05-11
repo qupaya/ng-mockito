@@ -102,7 +102,7 @@ export function isStubbed<T>(mock: T, propertyName: string) {
 }
 
 export function isMock(maybeMock: any): boolean {
-  return '__tsmockitoMocker' in maybeMock;
+  return typeof maybeMock === 'object' && '__tsmockitoMocker' in maybeMock;
 }
 
 function getTsMockitoMocker<T>(mock: T): Mocker {

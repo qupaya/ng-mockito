@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { render } from '@testing-library/angular';
 import * as tsMockito from 'ts-mockito';

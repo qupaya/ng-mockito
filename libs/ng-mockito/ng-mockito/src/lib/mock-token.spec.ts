@@ -185,8 +185,7 @@ describe.each`
       const TEST_TOKEN_3 = new InjectionToken<number>('');
       const TEST_TOKEN_4 = new InjectionToken<unknown[]>('');
       const TEST_TOKEN_5 = new InjectionToken<() => unknown>('');
-      const TEST_TOKEN_6 = new InjectionToken<symbol>('');
-      const TEST_TOKEN_7 = new InjectionToken<string>('optional');
+      const TEST_TOKEN_6 = new InjectionToken<string>('optional');
 
       @Injectable()
       class TestService {
@@ -196,8 +195,7 @@ describe.each`
           @Inject(TEST_TOKEN_3) public testToken3: number,
           @Inject(TEST_TOKEN_4) public testToken4: unknown[],
           @Inject(TEST_TOKEN_5) public testToken5: () => unknown,
-          @Inject(TEST_TOKEN_6) public testToken6: symbol,
-          @Optional() @Inject(TEST_TOKEN_7) public testToken7: string
+          @Optional() @Inject(TEST_TOKEN_6) public testToken6: string
         ) {}
       }
       TestBed.configureTestingModule({
@@ -209,7 +207,6 @@ describe.each`
           mockToken([TEST_TOKEN_4, TestService]),
           mockToken([TEST_TOKEN_5, TestService]),
           mockToken([TEST_TOKEN_6, TestService]),
-          mockToken([TEST_TOKEN_7, TestService]),
         ],
       });
 
@@ -221,8 +218,7 @@ describe.each`
       expect(testService.testToken4).toEqual([]);
       expect(testService.testToken5).toBeInstanceOf(Function);
       expect(testService.testToken5()).toBeUndefined();
-      expect(typeof testService.testToken6).toBe('symbol');
-      expect(testService.testToken7).toBeNull();
+      expect(testService.testToken6).toBeNull();
     });
 
     it('should provide value when value config is used', async () => {

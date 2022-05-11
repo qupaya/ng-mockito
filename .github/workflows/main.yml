@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, alpha]
+    branches: [main, next, alpha]
   pull_request:
-    branches: [main, alpha]
+    branches: [main, next, alpha]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,10 +20,10 @@ jobs:
         with:
           persist-credentials: false # needed for semantic-release, see https://github.com/semantic-release/git/issues/196#issuecomment-601310576
 
-      - name: Setup Node.js 12.x
+      - name: Setup Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 16.x
 
       - name: Install node dependences
         run: npm ci

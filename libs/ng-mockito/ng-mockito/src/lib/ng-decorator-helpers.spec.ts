@@ -1,3 +1,7 @@
+/* eslint-disable @angular-eslint/component-class-suffix */
+/* eslint-disable @angular-eslint/directive-selector */
+/* eslint-disable @angular-eslint/use-pipe-transform-interface */
+/* eslint-disable @angular-eslint/no-input-rename */
 import { Type } from './types';
 import {
   Component,

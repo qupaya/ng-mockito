@@ -16,10 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "ng-mockito": ["libs/ng-mockito/ng-mockito/src/index.ts"],
       "@qupaya/ng-mockito/integration": [
         "libs/ng-mockito/integration/src/index.ts"
-      ]
+      ],
+      "ng-mockito": ["libs/ng-mockito/ng-mockito/src/index.ts"]
     },
     "strict": true,
     "forceConsistentCasingInFileNames": true,
