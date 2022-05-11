@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/qupaya/ng-mockito/compare/v2.0.0...v2.0.1) (2022-05-11)
+
+
+### Bug Fixes
+
+* **ng-mockito:** use correct peer dependencies for angular router and platform-browser-dynamic ([4497bcd](https://github.com/qupaya/ng-mockito/commit/4497bcdd270fed02cea17085a46633c8935004df))
+
 ## [2.0.1-next.1](https://github.com/qupaya/ng-mockito/compare/v2.0.0...v2.0.1-next.1) (2022-05-11)
 
 
