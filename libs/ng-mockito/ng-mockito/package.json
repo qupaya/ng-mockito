@@ -25,6 +25,8 @@
   "peerDependencies": {
     "@angular/common": ">=12",
     "@angular/core": ">=12",
+    "@angular/router": ">=12",
+    "@angular/platform-browser-dynamic": ">=12",
     "ts-mockito": "^2.6.1",
     "typescript": ">=3.9.0"
   },
