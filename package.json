@@ -92,7 +92,7 @@
     "postcss-preset-env": "^6.7.0",
     "postcss-url": "^10.1.1",
     "prettier": "2.6.2",
-    "semantic-release": "^17.2.1",
+    "semantic-release": "^17.2.3",
     "ts-jest": "27.1.4",
     "ts-mockito": "^2.6.1",
     "ts-node": "9.1.1",
