@@ -32,7 +32,8 @@
     "update": "nx migrate latest",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "workspace-generator": "nx workspace-generator"
+    "workspace-generator": "nx workspace-generator",
+    "check-semantic-release": "semantic-release --dry-run"
   },
   "private": true,
   "dependencies": {
