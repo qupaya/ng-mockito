@@ -9,21 +9,20 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    runs-on: ubuntu-18.04
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check-out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false # needed for semantic-release, see https://github.com/semantic-release/git/issues/196#issuecomment-601310576
 
-      - name: Setup Node.js 16.x
-        uses: actions/setup-node@v1
+      - name: Setup Node.js 18.x
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version-file: 'package.json'
 
       - name: Install node dependences
         run: npm ci
