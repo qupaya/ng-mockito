@@ -1,6 +1,6 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { when, mock } from 'ts-mockito';
+import { when, mock } from '@typestrong/ts-mockito';
 import { mockNg } from './mock-ng';
 import { mockToken as _mockToken } from './mock-token';
 

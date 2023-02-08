@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import * as tsMockito from 'ts-mockito';
+import * as tsMockito from '@typestrong/ts-mockito';
 import { mockNg } from './mock-ng';
 import { mockProvider as _mockProvider } from './mock-provider';
 import { ActivatedRoute } from '@angular/router';

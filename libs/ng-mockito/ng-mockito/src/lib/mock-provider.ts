@@ -1,5 +1,5 @@
 import { FactoryProvider } from '@angular/core';
-import { instance } from 'ts-mockito';
+import { instance } from '@typestrong/ts-mockito';
 import { createTypeAndMock, noOp } from './ts-mockito-helpers';
 import { SetupMockFn, TypeOrMock } from './types';
 

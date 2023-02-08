@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { InjectionToken } from '@angular/core';
-import { mock } from 'ts-mockito';
+import { mock } from '@typestrong/ts-mockito';
 import { Mocker } from 'ts-mockito/lib/Mock';
 import { TypeAndMock, TypeOrMock, Type } from './types';
 

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FactoryProvider, InjectionToken, Type } from '@angular/core';
-import { instance, mock } from 'ts-mockito';
+import { instance, mock } from '@typestrong/ts-mockito';
 import {
   createDefaultValue,
   getConstructorParameterTypeOfInjectionToken,

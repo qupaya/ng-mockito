@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, EventEmitter } from '@angular/core';
-import { instance, when } from 'ts-mockito';
+import { instance, when } from '@typestrong/ts-mockito';
 import {
   getDirectiveProperties,
   getDecoratorMetadata,
@@ -45,5 +45,5 @@ export function mockComponent<T>(
     return instance(mock);
   }
 
-  return (Component(metadata)(MockComponent) as unknown) as Type<T>;
+  return Component(metadata)(MockComponent) as unknown as Type<T>;
 }

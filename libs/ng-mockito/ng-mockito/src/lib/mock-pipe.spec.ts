@@ -1,6 +1,6 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { render, screen } from '@testing-library/angular';
-import * as tsMockito from 'ts-mockito';
+import * as tsMockito from '@typestrong/ts-mockito';
 import { mockPipe as _mockPipe } from './mock-pipe';
 import { mockNg } from './mock-ng';
 
@@ -56,7 +56,7 @@ describe.each`
     describe('when using a pipe with arguments', () => {
       @Component({
         template: `<span data-testID="pipeOutput">{{
-          'test' | test: 'arg'
+          'test' | test : 'arg'
         }}</span>`,
       })
       class TestComponent {}

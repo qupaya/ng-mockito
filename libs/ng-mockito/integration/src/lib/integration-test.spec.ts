@@ -8,7 +8,7 @@ import {
   mockPipe,
   mockProvider,
 } from 'ng-mockito';
-import { anyString, mock, when } from 'ts-mockito';
+import { anyString, mock, when } from '@typestrong/ts-mockito';
 import {
   INTEGRATION_TEST_STRING_TOKEN,
   INTEGRATION_TEST_INTERFACE_TOKEN,

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Directive, EventEmitter } from '@angular/core';
-import { instance, when } from 'ts-mockito';
+import { instance, when } from '@typestrong/ts-mockito';
 import {
   getDecoratorMetadata,
   getDirectiveProperties,
@@ -44,5 +44,5 @@ export function mockDirective<T>(
     return instance(mock);
   }
 
-  return (Directive(metadata)(MockDirective) as unknown) as Type<T>;
+  return Directive(metadata)(MockDirective) as unknown as Type<T>;
 }

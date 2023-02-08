@@ -2,7 +2,7 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { InjectionToken, Renderer2 } from '@angular/core';
-import { instance, mock, when } from 'ts-mockito';
+import { instance, mock, when } from '@typestrong/ts-mockito';
 import { createTypeAndMock, isStubbed, isMock } from './ts-mockito-helpers';
 
 describe('ts-mockito helpers', () => {

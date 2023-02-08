@@ -9,7 +9,7 @@ import {
   Directive,
 } from '@angular/core';
 import { render } from '@testing-library/angular';
-import * as tsMockito from 'ts-mockito';
+import * as tsMockito from '@typestrong/ts-mockito';
 import { mockDirective as _mockDirective } from './mock-directive';
 import { mockNg } from './mock-ng';
 

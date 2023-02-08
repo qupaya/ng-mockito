@@ -1,5 +1,5 @@
 import { Pipe } from '@angular/core';
-import { instance } from 'ts-mockito';
+import { instance } from '@typestrong/ts-mockito';
 import { getDecoratorMetadata } from './ng-decorator-helpers';
 import { createTypeAndMock, noOp } from './ts-mockito-helpers';
 import { SetupMockFn, TypeOrMock, Type } from './types';
@@ -25,5 +25,5 @@ export function mockPipe<T>(
 
   Pipe(metadata)(MockPipe);
 
-  return (MockPipe as unknown) as Type<T>;
+  return MockPipe as unknown as Type<T>;
 }

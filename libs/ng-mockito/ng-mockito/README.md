@@ -6,7 +6,14 @@
 
 # ng-mockito
 
-**Type-safe mocking** for Angular, based on [ts-mockito](https://github.com/NagRock/ts-mockito). If you use ts-mockito for your Angular project, you'll love ng-mockito! If not, you'll love it anyway 🤓️. It also integrates nicely with [@testing-library/angular](https://github.com/testing-library/angular-testing-library).
+> ⚠️ switched to [@typestrong/ts-mockito](https://www.npmjs.com/package/@typestrong/ts-mockito) because ts-mockito seems to not be maintained anymore (see https://github.com/NagRock/ts-mockito/issues/212)
+> If you want to use this version of ng-mockito, you need to replace ts-mockito with @typestrong/ts-mockito:
+>
+> 1. `npm uninstall ts-mockito`.
+> 2. `npm install @typestrong/ts-mockito`.
+> 3. replace `'ts-mockito'` with `'@typestrong/ts-mockito'` in every file (no other changes should be necessary)
+
+**Type-safe mocking** for Angular, based on [ts-mockito](https://github.com/TypeStrong/ts-mockito). If you use ts-mockito for your Angular project, you'll love ng-mockito! If not, you'll love it anyway 🤓️. It also integrates nicely with [@testing-library/angular](https://github.com/testing-library/angular-testing-library).
 
 As a layer on top of ts-mockito, it's 100% compatible to it. You're still working with the usual functions (`when`, `verify`, ...).
 It just makes your life easier when preparing mocks for Angular-specific types.
@@ -110,7 +117,7 @@ TestBed.configureTestingModule({
 
 For more usage examples in combination with [@testing-library/angular](https://github.com/testing-library/angular-testing-library), please have a look at the [spec file in our GitHub repo](https://github.com/qupaya/ng-mockito/blob/main/libs/ng-mockito/integration/src/lib/integration-test.spec.ts).
 
-For more information about how to mock, stub and verify, see the [ts-mockito documentation](https://github.com/NagRock/ts-mockito).
+For more information about how to mock, stub and verify, see the [ts-mockito documentation](https://github.com/TypeStrong/ts-mockito).
 
 ---
 

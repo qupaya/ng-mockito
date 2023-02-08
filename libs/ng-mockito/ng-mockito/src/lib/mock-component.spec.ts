@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { render } from '@testing-library/angular';
-import * as tsMockito from 'ts-mockito';
+import * as tsMockito from '@typestrong/ts-mockito';
 import { mockComponent as _mockComponent } from './mock-component';
 import { mockNg } from './mock-ng';
 
