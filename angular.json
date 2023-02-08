@@ -31,7 +31,7 @@
             "jestConfig": "libs/ng-mockito/ng-mockito/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/ng-mockito/ng-mockito"]
+          "outputs": ["{workspaceRoot}/coverage/libs/ng-mockito/ng-mockito"]
         }
       },
       "generators": {
@@ -59,7 +59,7 @@
             "jestConfig": "libs/ng-mockito/integration/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/ng-mockito/integration"]
+          "outputs": ["{workspaceRoot}/coverage/libs/ng-mockito/integration"]
         }
       },
       "generators": {
