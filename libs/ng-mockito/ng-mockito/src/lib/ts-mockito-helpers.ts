@@ -2,7 +2,7 @@
 
 import { InjectionToken } from '@angular/core';
 import { mock } from '@typestrong/ts-mockito';
-import { Mocker } from 'ts-mockito/lib/Mock';
+import { Mocker } from '@typestrong/ts-mockito/lib/Mock';
 import { TypeAndMock, TypeOrMock, Type } from './types';
 
 export function createTypeAndMock<T>(
