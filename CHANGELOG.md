@@ -1,3 +1,15 @@
+# [3.0.0-next.1](https://github.com/qupaya/ng-mockito/compare/v2.0.1...v3.0.0-next.1) (2023-02-08)
+
+
+### Features
+
+* **ng-mockito:** switch to @typestrong/ts-mockito ([cc2dbf4](https://github.com/qupaya/ng-mockito/commit/cc2dbf4c80107184ba17975a327344baf1da138c))
+
+
+### BREAKING CHANGES
+
+* **ng-mockito:** CHANGE, see #46
+
 ## [2.0.1](https://github.com/qupaya/ng-mockito/compare/v2.0.0...v2.0.1) (2022-05-11)
 
 
